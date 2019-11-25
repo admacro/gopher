@@ -10,7 +10,9 @@ func main() {
 	fmt.Println("\"use backslash \\ for escaping\"\nnew line after quote")
 
 	// grave accent char `
-	var anything = `anything ~!@#$%^&*(){}?+|\ but the grave accent char`
+	var anything = `anything ~!@#$%^&*(){}?+|\
+      including new line
+    but the grave accent char` // not even \` can be included
 	fmt.Println(anything)
 
 	// Golang string is a sequence of bytes, not characters.
