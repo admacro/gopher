@@ -29,6 +29,9 @@ func main() {
 	// print rune in decimal, hex, and unicode notation
 	fmt.Printf("dec: %d, hex: %x, unicode notation: %U\n", heart, heart, heart)
 
+	// actual type of a rune is int32
+	fmt.Printf("%T\n", a)					// int32
+
 	fmt.Printf("%c\n", a)					// print char as is
 	fmt.Printf("%q\n", heart)			// print in golang syntax (rune syntax)
 	fmt.Printf("%U\n", zhong)			// print as Unicode notation (with upper case for a-f)
