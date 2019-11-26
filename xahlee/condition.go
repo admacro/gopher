@@ -1,0 +1,75 @@
+package main
+
+import "fmt"
+
+func grade(score int) string {
+	if score < 0 || score > 100 {
+		panic("Score must be between 0 and 100.")
+	} else if score < 60 {
+		return "D"
+	} else if score < 80 {
+		return "C"
+	} else if score < 90 {
+		return "B"
+	} else {
+		return "A"
+	}
+}
+
+func gender(code int) string {
+	switch code {
+	case 0:
+		return "Male"
+	case 1:
+		return "Female"
+	case 2:
+		return "Transgender"
+	default:
+		return "Unknown"
+	}
+}
+
+func main() {
+	fmt.Printf("My score is %v.\n", grade(0))
+	// fmt.Printf("My score is %v.\n", grade(101)) // error
+	fmt.Printf("My score is %v.\n", grade(87))
+	fmt.Printf("My score is %v.\n", grade(99))
+	fmt.Printf("My score is %v.\n", grade(70))
+
+	n := 4
+	if x := 3; n > x {						// x := 3 is a short statement inside if clause
+		fmt.Printf("OK")
+	}
+
+	// NO ternary expression
+	// beautiful_and_rich := true
+	// fmt.Printf("Will you marry me? %v\n", beautiful_and_rich ? "Yes." : "No" )
+
+	// switch case
+	fmt.Printf("I'm %v.\n", gender(1))
+	fmt.Printf("I'm %v.\n", gender(2))
+	fmt.Printf("I'm %v.\n", gender(0))
+	fmt.Printf("I'm %v.\n", gender(-1))
+
+	c := 1
+	switch c {
+	case 0, 1:										// multiple tests
+		fmt.Println("Binary")
+		fallthrough									// transfer control to the first statement of the next case
+	case 101:
+		fmt.Println("Mandatory")		// this line will be excuted
+	default:
+		fmt.Println("Done")					// this line will be ignored
+	}
+
+	// without switch expression, each case expression just tests for true
+	// just like multiple ifelse
+	switch {
+	case c < 1:
+		fmt.Println("Less")
+	case c == 1:
+		fmt.Println("Equal")
+	case c > 1:
+		fmt.Println("Greater")
+	}
+}
