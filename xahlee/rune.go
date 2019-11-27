@@ -1,8 +1,14 @@
+// http://xahlee.info/golang/golang_rune.html
 package main
 
 import "fmt"
 
-// http://xahlee.info/golang/golang_rune.html
+// [rune] /ru:n/ dictionary meaning:
+// A letter, or character, belonging to the written language
+// of the ancient Norsemen, or Scandinavians; in a wider sense,
+// applied to the letters of the ancient nations of Northern
+// Europe in general.
+
 func main() {
 	// rune means Unicode code point (think of it as char in Java)
 	// The purpose of rune is similar to character type in some other languages.
