@@ -4,6 +4,7 @@ import "fmt"
 
 func grade(score int) string {
 	if score < 0 || score > 100 {
+		// galang's panic is like throwing runtime exception in Java
 		panic("Score must be between 0 and 100.")
 	} else if score < 60 {
 		return "D"
