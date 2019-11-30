@@ -10,18 +10,20 @@ func main() {
 
 	// file permission in octal (6 means user can read and write)
 	// see more at http://permissions-calculator.org
-	// Note: if you assign 0644 (file permission in octal) directly
-	// to perm (actul type is int), ioutil.WriteFile will complain:
+
+	// Note
+	// if you assign 0644 (octal value of read and write file permission) directly to
+	// perm (whose type will be int), ioutil.WriteFile will complain:
 	//     cannot use perm (type int) as type os.FileMode in argument to ioutil.WriteFile
-	// but if you pass 644 directly to ioutil.WriteFilehough, it works
+	// but if you pass 0644 directly to ioutil.WriteFile, it will work
 
 	// var perm = 0644
 	// fmt.Printf("%T\n", perm)				// int
 
 	var perm = os.FileMode(0644)
-
 	err := ioutil.WriteFile(filePath, content, perm)
-	// err := ioutil.WriteFile(filePath, content, 0644) // this works
+	// err := ioutil.WriteFile(filePath, content, 0644) // this works as well
+
 	if err != nil {
 		panic(err)
 	}
