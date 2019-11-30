@@ -1,2 +1,2 @@
-this is a log
-I'm learning golang
+this is a new log
+I'm learning golang again!

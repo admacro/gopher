@@ -14,6 +14,32 @@ func local_func() {
 	// inside a function, := is same as var
 	local_variable := "hello local"
 	fmt.Printf("%v\n", local_variable)
+
+	// the difference between using var and := is that var will complain
+	// if you declare a variable with a name same as any of the
+	// variables that are already declared in the same scope
+	// while := will work fine as long as there is a variable with a new
+	// name in the declaration list, despited the redeclared variables
+
+	// a very common case is err:
+	//   if you use var, you will have to give a new name for every different
+	//   err in the same scope
+	//   if you use :=, you can reuse the same name for err which are
+	//   usually only used for output or logging purpose
+
+	var v, i = multi_return_func("see you", 3166)
+	fmt.Printf("%v, %v\n", v, i)
+
+	// var vv, i = multi_return_func("goodbye", 886) // err: i redeclared in this block
+
+	vv, i := multi_return_func("goodbye", 886) // this works fine (vv is new, i is not)
+	// v, i := multi_return_func("goodbye", 886) // err: no new variables on left side of :=
+
+	fmt.Printf("%v, %v\n", vv, i)
+}
+
+func multi_return_func(v string, i int) (string, int) {
+	return v, i
 }
 
 func main() {

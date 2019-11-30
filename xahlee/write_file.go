@@ -4,6 +4,14 @@ import "fmt"
 import "io/ioutil"
 import "os"
 
+func printFileContent(filePath string) {
+	data, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("data: %v\n",  string(data))
+}
+
 func main() {
 	var content = []byte("this is a log\nI'm learning golang")
 	var filePath = "golang_log.txt"
@@ -28,6 +36,17 @@ func main() {
 		panic(err)
 	}
 
-	data, err := ioutil.ReadFile(filePath)
-	fmt.Printf("data: %v\n",  string(data))
+	printFileContent(filePath)
+
+
+	// create file and then write to it step by step
+	file, err := os.Create(filePath)
+	if err != nil {
+		panic(err)
+	}
+
+	var stringContent = "this is a new log\nI'm learning golang again!"
+	file.WriteString(stringContent)
+
+	printFileContent(filePath)
 }
