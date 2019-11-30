@@ -16,19 +16,27 @@ func main() {
 
 		filename := info.Name()
 		if info.IsDir() {
+			if filename == ".git" {		// ignore git metadata
+				return filepath.SkipDir
+			}
 			filename += "/"
 		}
 
 		// print with padding
-
 		fmt.Printf("%v %5v bytes %40v %10v %10v %v\n",
 			info.Mode(), info.Size(), info.ModTime(),
 			filepath.Ext(path), filepath.Dir(path), filename)
 
+		// return values of walkFn must be one of the following
+		// 1. value of type error (error is in interface)
+		//    if error is returned, filepath.Walk will also return error and the walk is stopped
+		// 2. nil (so far so good, keey walking :-)
+		// 3. filepath.SkipDir (value: "skip this directory", type: *errors.errorString)
+		//    if filepath.SkipDir is returned, filepath.Walk will skip walking the path
 		return nil
 	}
 
-	dir := "."
+	dir := ".."
 	fmt.Printf("%v %5v bytes %40v %10v %10v %v\n",
 		"Permission", "Size", "Modification Time",
 		"Extention", "Directory", "Name")
