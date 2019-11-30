@@ -1,0 +1,2 @@
+this is a log
+I'm learning golang
