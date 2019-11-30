@@ -35,7 +35,7 @@ func main() {
 		// return values of walkFn must be one of the following
 		// 1. value of type error (error is in interface)
 		//    if error is returned, filepath.Walk will also return error and the walk is stopped
-		// 2. nil (so far so good, keey walking :-)
+		// 2. nil (no error, so far so good, keey walking :-)
 		// 3. filepath.SkipDir (value: "skip this directory", type: *errors.errorString)
 		//    if filepath.SkipDir is returned, filepath.Walk will skip walking the path
 		return nil
