@@ -30,7 +30,7 @@ import "math/rand"
 // that produces a deterministic sequence of values each time a program is run.
 // Use the Seed function to initialize the default Source if different behavior
 // is required for each run.
-// The default Source is safe for concurrent use by multiple goroutines, 
+// The default Source is safe for concurrent use by multiple goroutines,
 // but Sources created by NewSource are not.
 func main() {
 	// pseudorandom number

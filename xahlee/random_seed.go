@@ -3,7 +3,7 @@ package main
 import "fmt"
 import "math/rand"
 
-func main() {	
+func main() {
 	// math.Seed(seed int64)
 	// Seed uses the provided seed value to initialize the default Source
 	// to a deterministic state.
