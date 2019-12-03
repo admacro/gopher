@@ -3,9 +3,14 @@ package main
 
 import "fmt"
 
-// Golang's function is a closure.
+// Golang's function may be a closure.
 // Closure is a programming language feature. It is a function such
 // that all variables it uses will still work outside where it is defined.
+
+// A closure is a function value that references variables from outside its
+// body. The function may access and assign to the referenced variables; in
+// this sense the function is "bound" to the variables.
+// Each closure is bound to its own variables.
 
 // For example:
 //   1. a function f defines a local variable a and a local function g
@@ -40,8 +45,14 @@ func main() {
 
 	var get, set = class(1)
 	fmt.Printf("get(): %v\n", get())	// get(): 1
-
 	fmt.Println("set(3)")
 	set(3)
 	fmt.Printf("get(): %v\n", get())	// get(): 3
+
+	var read, write = class(100)
+	fmt.Printf("read(): %v\n", read())	// read(): 100
+	fmt.Println("write(3000)")
+	write(3000)
+	fmt.Printf("read(): %v\n", read())	// read(): 3000
+
 }
