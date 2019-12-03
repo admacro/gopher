@@ -8,6 +8,12 @@ func main() {
 		// int, uint, and uintptr are usually 32bit wide on
 		// 32bit systems, and 64bit wide on 64bit systems
 
+		// when you need an integer value, you should use int
+		// unless you have very specific reason to use a sized
+		// or unsigned integer type.
+
+		p bool = true
+
 		a int = 1
 		b int8 = 2
 		c int16 = 3
@@ -20,6 +26,9 @@ func main() {
 		ud uint32 = 4
 		ue uint64 = 5
 
+		bt byte = 123								// alias for uint8
+		r rune = 96									// alias for int32
+
 		fa float32 = 3.14
 		fb float64 = 0.618
 
@@ -29,6 +38,7 @@ func main() {
 		ptr uintptr
 	)
 
+	fmt.Printf("%T\n", p)
 	fmt.Printf("%T\n", a)
 	fmt.Printf("%T\n", b)
 	fmt.Printf("%T\n", c)
@@ -40,6 +50,9 @@ func main() {
 	fmt.Printf("%T\n", uc)
 	fmt.Printf("%T\n", ud)
 	fmt.Printf("%T\n", ue)
+
+	fmt.Printf("%T\n", bt)				// uint8
+	fmt.Printf("%T\n", r)					// int32
 
 	fmt.Printf("%T\n", fa)
 	fmt.Printf("%T\n", fb)
