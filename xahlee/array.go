@@ -3,10 +3,12 @@ package main
 import "fmt"
 
 func main() {
-	// [n]type
-	var names [3]string
+	// [n]T is a type in Go
+	// it's an array of n values of type T
+	var names [3]string						// length is 3
 	names[0] = "James"
 
+	// an array's length (n) is part of its type, so arrays cannot be resized
 	fmt.Printf("%T\n", names)			// [3]string
 
 	fmt.Printf("%d\n", len(names))
