@@ -6,10 +6,14 @@ import "fmt"
 // similar to hashtable, dictionary, associative array in other languages
 func main() {
 	// map[key_type_name]value_type_name
-	var m map[string]int					// declare a map with key of string and value of int
+	var m map[string]int					// declare a map with key of string and value of int, value of m is nil
 	fmt.Printf("%T\n", m)					// map[string]int
 	fmt.Println(m)								// map[]
 	fmt.Println(len(m))								// 0
+
+	// the zero value of a map is nil
+	// a nil map has no keys, nor can keys be added
+	m["a"] = 1										// panic: assignment to entry in nil map
 
 	// literal map
 	var p = map[string]int{"dad": 50, "mom": 48}
