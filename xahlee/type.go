@@ -63,7 +63,7 @@ func main() {
 	fmt.Printf("%T\n", ptr)
 
 	// type conversion
-	// newtype(v) converts v to newtype
+	// T(v) converts value v to type T
 	fmt.Printf("%T\n", int32(ua))
 	fmt.Printf("%T\n", float64(fa))
 

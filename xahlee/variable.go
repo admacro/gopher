@@ -3,11 +3,7 @@ package main
 
 import "fmt"
 
-// package level variables are local to the package
-// this is also a constant
-//   constant must have a value
-//   constant values can be string, rune, bool, or numeric values
-const package_version = "1.2.3"
+
 
 // Outside a function, every statement begins with a keyword (var, func, and so on)
 // syntax error: non-declaration statement outside function
@@ -47,11 +43,21 @@ func multi_return_func(v string, i int) (string, int) {
 }
 
 // var can be package or function level
+// package level variables are local to the package
 var packageLevelVariable = "packageLevelVariable"
 
+// constant are declared like variable, but with const keyword
+// const can be package or function level
+//   constant must have a value
+//   constant values can be string, rune (character), bool, or numeric values
+const Package_Version = "1.2.3"
+
 func main() {
+	const ID = 8888888
+
 	// fmt.Printf("%v\n", local_variable) // undefined: local_variable
-	fmt.Printf("Package version: %v\n", package_version)
+	fmt.Printf("Package Version: %v\n", Package_Version)
+	fmt.Printf("ID: %v\n", 8888888)
 
 	local_func()
 
