@@ -7,10 +7,17 @@ func cleanup(s string) {
 }
 
 func main() {
-	s := "mess"
-	defer cleanup(s)
+	fmt.Println("main program starts...")
 
-	fmt.Println("main program...")
+	fmt.Println("some initial work")
+	defer cleanup("mess of initial work")
+
+	for i:= 1; i <= 5; i++ {
+		fmt.Printf("Process step %v\n", i)
+		defer cleanup(fmt.Sprintf("mess of step %v", i))
+	}
+
+	fmt.Println("main program exists...")
 }
 
 // defer func_name(args)
@@ -25,7 +32,23 @@ func main() {
 // the surrounding function exists by deferring file close right after
 // opening/reading a file.
 
-// in the example above, cleanup() will be called when main() exits
-// output:
-// main program...
-// cleaning up...
+// Stacking defers
+// defered functions are pushed onto a stack. When a function returns,
+// its deferred calls are executed in last-in-first-out order.
+
+// output of above program:
+// main program starts...
+// some initial work
+// Process step 1
+// Process step 2
+// Process step 3
+// Process step 4
+// Process step 5
+// main program exists...
+// cleaning up [mess of step 5]...
+// cleaning up [mess of step 4]...
+// cleaning up [mess of step 3]...
+// cleaning up [mess of step 2]...
+// cleaning up [mess of step 1]...
+// cleaning up [mess of initial work]...
+
