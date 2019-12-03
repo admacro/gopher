@@ -34,6 +34,13 @@ func main() {
 	fmt.Printf("%T\n", pos) // main.Position
 	fmt.Printf("%T\n", ptr) // &main.Position
 
+	// if i have a struct pointer, this is how struct fields
+	// are typically accessed, but it's cubersome
+	(*ptr).x = 11
+	fmt.Printf("%#v\n", pos) // main.Position{x:11, y:4}
+
+	// so, Go permits struct fields to be accessed through a
+	// struct pointer directly
 	ptr.x = 5 // update field of associated struct
 	fmt.Printf("%#v\n", pos) // main.Position{x:5, y:4}
 
