@@ -18,8 +18,8 @@ func main() {
 // but part of its purpose is similar to finally in Java:
 //     make sure A is done when B is finished
 
-// when defer is called, the args are evaluated, but not the function
-// which will be called when the surrounding function exists
+// when defer is called, the args are evaluated immediately, but the
+// function call is not executed until the surrounding function returns
 
 // a very common use case is to make sure opened files are closed after
 // the surrounding function exists by deferring file close right after
