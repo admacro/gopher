@@ -25,7 +25,10 @@ func main() {
 		fmt.Printf("city[%d] = %#v\n", i, city)
 	}
 
-	// array[:] returns a slice of array
+	// a[:] returns a slice of array a
+	// it's actually a special form utilizing slice defaults, same as a[0:len(a)]
+	// a[low:high]
+	//   the default for low is 0, and length(a) for high
 	var slice = cities[:]
 	fmt.Printf("%T\n", slice)			 // []string
 	fmt.Printf("%d\n", len(slice)) // 3

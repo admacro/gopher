@@ -14,14 +14,18 @@ func print_slice_info(s []string, title string) {
 }
 
 func main() {
-	// slice is like array, but length can be changed (array length is fixed)
-	// golang slice is essentially a reference to a segment of arary
-	// slice is similar to ArrayList in Java
+	// Slice is like array, but length can be changed (array length is fixed).
+	// It's is a dynamically-sized, flexible view into the elements of an array.
+	// In practice, slices are much more common than arrays.
+	// Slice is similar to ArrayList in Java.
 
 	// []type => slice
 	// [n]type => array
 
+	// Golang slice is essentially a reference to a segment of arary.
+	// this creates [3]string{"Java", "Go", "Ruby"} then builds a slice that references it
 	var langs = []string{"Java", "Go", "Ruby"}
+
 	fmt.Printf("Type of langs: %T\n", langs) // []string
 	fmt.Printf("Langs: %#v\n", langs)
 	fmt.Printf("Langs: %v\n", langs)
@@ -80,6 +84,12 @@ func main() {
 	followers = reflect.Append(slice, item1, item2).Interface().([]string)
 	print_slice_info(followers, "followers") // length: 7, capacity: 10 (cap is doubled, was 5)
 
+
+	// A slice does not store any data, it just describes a section of an
+	// underlying array.
+	// Changing the elements of a slice modifies the corresponding elements of
+	// its underlying array.
+	// Other slices that share the same underlying array will see those changes.
 
 	// slice of slice
 	// s[a:b] returns a slice of s from index a (included) to b (excluded)
