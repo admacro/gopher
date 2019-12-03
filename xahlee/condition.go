@@ -17,6 +17,10 @@ func grade(score int) string {
 	}
 }
 
+// Go only runs the selected case
+// break is provided automatically in Go
+// switch cases need not be constants, and the values involved
+// need not be integers
 func gender(code int) string {
 	switch code {
 	case 0:
@@ -65,7 +69,7 @@ func main() {
 
 	// without switch expression, each case expression just tests for true
 	// just like multiple ifelse
-	switch {
+	switch {											// same as `switch true`
 	case c < 1:
 		fmt.Println("Less")
 	case c == 1:
