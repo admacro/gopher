@@ -20,6 +20,7 @@ func main() {
 	// exported (public) names, begin with upper case
 	// any unexported (private) names are not accessible from outside the package
 	fmt.Printf("%v\n", math.Sqrt(9))
+	fmt.Printf("Pi = %v\n", math.Pi)
 
 	// variable declaration, without type (see variable.go for more)
 	var name = "James"
