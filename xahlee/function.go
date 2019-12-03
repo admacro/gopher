@@ -19,7 +19,13 @@ func multiply(x, y int) int {
 func divide(x, y int) (quotient int, remainder int) {
 	quotient = x / y
 	remainder = x - quotient * y
-	return quotient, remainder
+
+	// return quotient, remainder
+
+	// "naked" return: returns the named return values
+	// use only in short functions as it can harm readabitlity in
+	// longer functions
+	return
 }
 
 // function is a value
