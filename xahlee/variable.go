@@ -9,6 +9,10 @@ import "fmt"
 //   constant values can be string, rune, bool, or numeric values
 const package_version = "1.2.3"
 
+// Outside a function, every statement begins with a keyword (var, func, and so on)
+// syntax error: non-declaration statement outside function
+// invalid_variable := 123
+
 // variables inside function are local to the function
 func local_func() {
 	// inside a function, := is same as var
@@ -122,5 +126,4 @@ func main() {
 	fmt.Printf("%#v\n", address)	// "2000 shoreline CT"
 	fmt.Printf("%#v\n", city)			// "Brisbane"
 }
-
 
