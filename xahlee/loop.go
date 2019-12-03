@@ -47,6 +47,7 @@ func main() {
 	fmt.Println("---------------------")
 
 	// for range loop
+	// the first is the index, the second is a copy of the element at the index
 	names := []string{"Jack", "Helen", "May"}
 	for i, name := range names {
 		fmt.Printf("Loop #%d: %v\n", i + 1, name)
@@ -56,6 +57,11 @@ func main() {
 	// thus, it can't be used as value
 	for _, name := range names {
 		fmt.Printf("Name: %v\n", name)
+	}
+
+	// if only index is wanted, the second variable can be omitted
+	for i := range names {
+		fmt.Printf("Index: %v\n", i)
 	}
 }
 

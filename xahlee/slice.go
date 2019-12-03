@@ -120,6 +120,8 @@ func main() {
 	// append multiple items beyond the original slice
 	// when cap of the result slice is greater than that of the original slice
 	// a whole new slice will be created and it shares no data with the original slice
+	// a bigger array is allocated to hold extra elements, and the new slice will point
+	// to the newly allocated array
 	var all_new_titles = append(titles, "joker", "superman", "batman")
 	print_slice_info(titles, "titles") // length: 3, capacity: 5
 	print_slice_info(all_new_titles, "all_new_titles") // length: 6, capacity: 10
