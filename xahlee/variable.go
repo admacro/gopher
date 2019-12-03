@@ -42,6 +42,9 @@ func multi_return_func(v string, i int) (string, int) {
 	return v, i
 }
 
+// var can be package or function level
+var packageLevelVariable = "packageLevelVariable"
+
 func main() {
 	// fmt.Printf("%v\n", local_variable) // undefined: local_variable
 	fmt.Printf("Package version: %v\n", package_version)
@@ -58,7 +61,10 @@ func main() {
 		titles []string							// ; can be omitted when it's at the end of line
 	)
 
-	var address, city string // declare multiple variables of one type
+	// variables with initializers
+	// type can be omitted if an initializer is present
+	// the variable will take the type of the initializer
+	var address, city = "Shoreline", "Brisbane" // declare multiple variables of one type
 
 	// in golang, default values have another name: zero value
 	// the zero values are:
@@ -73,7 +79,7 @@ func main() {
 	fmt.Printf("%#v\n", married)	// false
 	fmt.Printf("%#v\n", titles)		// []string(nil)
 
-	fmt.Printf("%#v, %#v\n", address, city) // "", "", ""
+	fmt.Printf("%#v, %#v\n", address, city) // "Shoreline", "Brisbane"
 
 	// possible values of various golang types
 	// name = nil										// cannot use nil as type string in assignment
