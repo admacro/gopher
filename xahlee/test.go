@@ -14,7 +14,7 @@ import ("fmt"; "math"; "etc")
 //   fmt redeclared as imported package name
 
 func main() {
-	fmt.Println("i love cats");
+	fmt.Println("i love cats")
 	fmt.Println(3 + 4) // semicolon is optional when is at the end of a line
 
 	// exported (public) names, begin with upper case
@@ -40,4 +40,3 @@ func main() {
 	fmt.Printf("value => type: %#v => %T, %#v => %T\n", name, name, age, age)
 	fmt.Printf("80%% of the software in the world is garbage.\n")
 }
-

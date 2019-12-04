@@ -36,7 +36,6 @@ func main() {
 
 	print_slice_info(langs, "langs") // length: 3, capacity: 3
 
-
 	// create slice with 'make'
 	// make([]type, count_n) => creates a slice of count_n items of type
 	// capacity defaults to len if not specified
@@ -51,13 +50,11 @@ func main() {
 
 	print_slice_info(followers, "followers") // length: 3, capacity: 5
 
-
 	// slice item assignment
 	for i, _ := range followers {
-		followers[i] = fmt.Sprintf("follower #%d", i + 1)
+		followers[i] = fmt.Sprintf("follower #%d", i+1)
 	}
 	print_slice_info(followers, "followers") // length: 5, capacity: 5
-
 
 	// add more items beyond slice length
 	// reflect.Append(s Value, x ...Value) Value
@@ -68,11 +65,10 @@ func main() {
 		// followers[i] = fmt.Sprintf("follower #%d", i + 1)
 
 		slice := reflect.ValueOf(followers)
-		item := reflect.ValueOf(fmt.Sprintf("follower #%d", i + 1))
+		item := reflect.ValueOf(fmt.Sprintf("follower #%d", i+1))
 		followers = reflect.Append(slice, item).Interface().([]string)
 	}
 	print_slice_info(followers, "followers") // length: 5, capacity: 5
-
 
 	// append multiple items beyond slice capacity
 	// when you append beyond capacity, golang automatically grows the capacity
@@ -83,7 +79,6 @@ func main() {
 	item2 := reflect.ValueOf(fmt.Sprintf("follower #%d", 102))
 	followers = reflect.Append(slice, item1, item2).Interface().([]string)
 	print_slice_info(followers, "followers") // length: 7, capacity: 10 (cap is doubled, was 5)
-
 
 	// A slice does not store any data, it just describes a section of an
 	// underlying array.
@@ -113,9 +108,8 @@ func main() {
 	// result slice is not greater than that of the original slice
 	// in this case, new_titles and titles share data from index 0 to 2
 	new_titles[1] = "lady gaga"
-	print_slice_info(titles, "titles") // titles[1]: "lady gaga"
+	print_slice_info(titles, "titles")         // titles[1]: "lady gaga"
 	print_slice_info(new_titles, "new_titles") // new_titles[1]: "lady gaga"
-
 
 	// append multiple items beyond the original slice
 	// when cap of the result slice is greater than that of the original slice
@@ -123,13 +117,12 @@ func main() {
 	// a bigger array is allocated to hold extra elements, and the new slice will point
 	// to the newly allocated array
 	var all_new_titles = append(titles, "joker", "superman", "batman")
-	print_slice_info(titles, "titles") // length: 3, capacity: 5
+	print_slice_info(titles, "titles")                 // length: 3, capacity: 5
 	print_slice_info(all_new_titles, "all_new_titles") // length: 6, capacity: 10
 
 	all_new_titles[2] = "wonder woman"
-	print_slice_info(titles, "titles") // titles[2]: ""
+	print_slice_info(titles, "titles")                 // titles[2]: ""
 	print_slice_info(all_new_titles, "all_new_titles") // all_new_titles[2]: "wonder woman"
-
 
 	// append slice to slice
 	fmt.Println("\n#append--------------------------------")
@@ -137,22 +130,20 @@ func main() {
 	var s1 = []int{1, 2}
 	var s2 = []int{3, 4}
 	// note the syntax of the second parameter
-	// s2... means to unpack s2 and pass all items of s2 to append 
+	// s2... means to unpack s2 and pass all items of s2 to append
 	var s = append(s1, s2...)
 	s[0] = 100
 	s[2] = 200
-	fmt.Printf("%#v\n", s)				// []int{100, 2, 200, 4}
-	fmt.Printf("%#v\n", s1)				// []int{1, 2}
-	fmt.Printf("%#v\n", s2)			// []int{3, 4}
-
+	fmt.Printf("%#v\n", s)  // []int{100, 2, 200, 4}
+	fmt.Printf("%#v\n", s1) // []int{1, 2}
+	fmt.Printf("%#v\n", s2) // []int{3, 4}
 
 	// cut slice (delete elements)
 	fmt.Println("\n#cut--------------------------------")
 
 	var sss = []byte("0123456789")
 	var ss = append(sss[:5], sss[7:]...) // index 5 is not included, 7 is included
-	fmt.Printf("%c\n", ss)							 // [0 1 2 3 4 7 8 9]
-
+	fmt.Printf("%c\n", ss)               // [0 1 2 3 4 7 8 9]
 
 	// copy slice
 	fmt.Println("\n#copy--------------------------------")
@@ -164,42 +155,39 @@ func main() {
 
 	// nothing copied
 	copy(dst, src)
-	print_slice_info(dst, "dst")	// length: 0, capacity: 0 (no elements copied as dst is empty)
+	print_slice_info(dst, "dst") // length: 0, capacity: 0 (no elements copied as dst is empty)
 
 	// copy longer to shorter
-	dst = make([]string, 2)		// make a slice of length 2
+	dst = make([]string, 2) // make a slice of length 2
 	copy(dst, src)
-	fmt.Printf("%#v\n", dst)			// []string{"bmw", "audi"}
+	fmt.Printf("%#v\n", dst) // []string{"bmw", "audi"}
 
 	// copy shorter to longer
-	dst = make([]string, 4, 7)		// make a slice of length 4 and capacity 7
+	dst = make([]string, 4, 7) // make a slice of length 4 and capacity 7
 	copy(dst, src)
-	fmt.Printf("%#v\n", dst)			// []string{"bmw", "audi", "mercedes", ""}
-
+	fmt.Printf("%#v\n", dst) // []string{"bmw", "audi", "mercedes", ""}
 
 	// clean slice
 	fmt.Println("\n#clean--------------------------------")
 
-	dst = nil											// this is the recommanded way
+	dst = nil // this is the recommanded way
 	src = src[0:0]
-	fmt.Printf("%#v\n", dst)			// []string(nil)
-	fmt.Printf("%#v\n", src)			// []string{}
-
+	fmt.Printf("%#v\n", dst) // []string(nil)
+	fmt.Printf("%#v\n", src) // []string{}
 
 	// nested slice
 	fmt.Println("\n#nest--------------------------------")
 
-	var matrix = [][]int {{1,4}, {2,4}, {3,6}}
-	fmt.Printf("%#v\n", matrix)								 // [][]int{[]int{1, 4}, []int{2, 4}, []int{3, 6}}
+	var matrix = [][]int{{1, 4}, {2, 4}, {3, 6}}
+	fmt.Printf("%#v\n", matrix) // [][]int{[]int{1, 4}, []int{2, 4}, []int{3, 6}}
 
-	var haha = make([][]byte, 3)	// make a slice with len 3, each element is itself a slice of type [][]byte
-	fmt.Printf("%#v\n", haha)			// [][]uint8{[]uint8(nil), []uint8(nil), []uint8(nil)}
+	var haha = make([][]byte, 3) // make a slice with len 3, each element is itself a slice of type [][]byte
+	fmt.Printf("%#v\n", haha)    // [][]uint8{[]uint8(nil), []uint8(nil), []uint8(nil)}
 	haha[0] = []byte("you")
 	haha[1] = []byte("are")
 	haha[2] = []byte("beatiful")
-	fmt.Printf("%#c\n", haha)			// [[y o u] [a r e] [b e a t i f u l]]
+	fmt.Printf("%#c\n", haha)       // [[y o u] [a r e] [b e a t i f u l]]
 	fmt.Printf("%#c\n", haha[1][1]) // r
-
 
 	// slice to string
 	// strings.Join(slice, sep string)
@@ -207,6 +195,5 @@ func main() {
 
 	var names = []string{"Donald", "Trump"}
 	var name = strings.Join(names, " ")
-	fmt.Printf("%#v\n", name)			// "Donald Trump"
+	fmt.Printf("%#v\n", name) // "Donald Trump"
 }
-

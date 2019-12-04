@@ -15,7 +15,7 @@ func main() {
 	// field names must be unique
 	type Person struct {
 		name string
-		age int
+		age  int
 	}
 
 	type Position struct {
@@ -23,17 +23,17 @@ func main() {
 	}
 
 	// create a strut
-	var p = Person{"Joker", 40}		// if filed names are omitted, all fields must be present in the order defined
+	var p = Person{"Joker", 40} // if filed names are omitted, all fields must be present in the order defined
 	// var p = Person{"Joker"}				// err: too few values in Person literal
-	var pp = Person{}							// this is ok
+	var pp = Person{} // this is ok
 
-	fmt.Println(p)								// {Joker 40}
-	fmt.Printf("%+v\n", p)					// {name:Joker age:40}
-	fmt.Printf("%#v\n", p)					// main.Person{name:"Joker", age:40}
-	fmt.Printf("%#v\n", pp)					// main.Person{name:"", age:0}
-	
+	fmt.Println(p)          // {Joker 40}
+	fmt.Printf("%+v\n", p)  // {name:Joker age:40}
+	fmt.Printf("%#v\n", p)  // main.Person{name:"Joker", age:40}
+	fmt.Printf("%#v\n", pp) // main.Person{name:"", age:0}
+
 	var bb = Person{name: "baby"}
-	fmt.Println(bb)								// {baby 0} ommited field will have zero value of its type
-	bb.age = 3										// modify/update/fill struct field
+	fmt.Println(bb)                           // {baby 0} ommited field will have zero value of its type
+	bb.age = 3                                // modify/update/fill struct field
 	fmt.Printf("{%v, %v}\n", bb.name, bb.age) // {baby, 3}
 }

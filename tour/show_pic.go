@@ -75,4 +75,3 @@ func WriteHtmlFile(imageStrEncoding string) {
 		panic(err)
 	}
 }
-

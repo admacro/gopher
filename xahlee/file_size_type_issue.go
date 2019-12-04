@@ -13,13 +13,13 @@ func main() {
 	file, err := os.Open(FILE_PATH)
 	fileInfo, err := file.Stat()
 	if err != nil {
-    panic(err)
+		panic(err)
 	}
 
 	defer file.Close()
 
 	// fileInfo.Size is int64
-	var size = fileInfo.Size()		// Btw, is int64 supported on a 32bit system?
+	var size = fileInfo.Size() // Btw, is int64 supported on a 32bit system?
 	var data = make([]byte, size, size)
 
 	// count is int
@@ -30,4 +30,3 @@ func main() {
 	fmt.Printf("FileInfo.Size() = %v\n", size)
 	fmt.Printf("Count of bytes read = %v\n", count)
 }
-

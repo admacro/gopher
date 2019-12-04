@@ -14,12 +14,12 @@ func Sqrt(x float64) (z float64) {
 	if x > 0 {
 		z = x / 2
 	} else {
-		z = 2 * x		
+		z = 2 * x
 	}
 
 	for {
 		fmt.Printf("%v: , ", z)
-		d := (z*z - x) / (2*z)
+		d := (z*z - x) / (2 * z)
 		fmt.Printf("%v: \n", d)
 		if math.Abs(d) < l {
 			fmt.Printf("%v: ", z)

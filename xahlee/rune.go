@@ -29,22 +29,21 @@ func main() {
 	var heart = '♥'
 	var zhong = '🀄'
 	var newline = '\n'
-	var heart_u = '\u2665'				// same as '♥'
-	var zhong_u = '\U0001f004'		// same as '🀄'
+	var heart_u = '\u2665'     // same as '♥'
+	var zhong_u = '\U0001f004' // same as '🀄'
 
 	// print rune in decimal, hex, and unicode notation
 	fmt.Printf("dec: %d, hex: %x, unicode notation: %U\n", heart, heart, heart)
 
 	// actual type of a rune is int32
-	fmt.Printf("%T\n", a)					// int32
+	fmt.Printf("%T\n", a) // int32
 
-	fmt.Printf("%c\n", a)					// print char as is
-	fmt.Printf("%q\n", heart)			// print in golang syntax (rune syntax)
-	fmt.Printf("%U\n", zhong)			// print as Unicode notation (with upper case for a-f)
+	fmt.Printf("%c\n", a)     // print char as is
+	fmt.Printf("%q\n", heart) // print in golang syntax (rune syntax)
+	fmt.Printf("%U\n", zhong) // print as Unicode notation (with upper case for a-f)
 
-	fmt.Printf("%b\n", newline)		// base 2 (binary)
-	fmt.Printf("%o\n", heart_u)		// base 8 (octal)
-	fmt.Printf("%d\n", zhong_u)		// base 10 (decimal)
-	fmt.Printf("%x\n", zhong_u)		// base 16 (hexdecimal, with lower case for a-f)
+	fmt.Printf("%b\n", newline) // base 2 (binary)
+	fmt.Printf("%o\n", heart_u) // base 8 (octal)
+	fmt.Printf("%d\n", zhong_u) // base 10 (decimal)
+	fmt.Printf("%x\n", zhong_u) // base 16 (hexdecimal, with lower case for a-f)
 }
-

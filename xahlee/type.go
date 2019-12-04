@@ -14,25 +14,25 @@ func main() {
 
 		p bool = true
 
-		a int = 1
-		b int8 = 2
+		a int   = 1
+		b int8  = 2
 		c int16 = 3
-		d int32 = 4									// alias rune
+		d int32 = 4 // alias rune
 		e int64 = 5
 
-		ua uint = 1
-		ub uint8 = 2								// alias byte
+		ua uint   = 1
+		ub uint8  = 2 // alias byte
 		uc uint16 = 3
 		ud uint32 = 4
 		ue uint64 = 5
 
-		bt byte = 123								// alias for uint8
-		r rune = 96									// alias for int32
+		bt byte = 123 // alias for uint8
+		r  rune = 96  // alias for int32
 
 		fa float32 = 3.14
 		fb float64 = 0.618
 
-		ca complex64 = 1.22233
+		ca complex64  = 1.22233
 		cb complex128 = 1.22233
 
 		ptr uintptr
@@ -51,15 +51,15 @@ func main() {
 	fmt.Printf("%T\n", ud)
 	fmt.Printf("%T\n", ue)
 
-	fmt.Printf("%T\n", bt)				// uint8
-	fmt.Printf("%T\n", r)					// int32
+	fmt.Printf("%T\n", bt) // uint8
+	fmt.Printf("%T\n", r)  // int32
 
 	fmt.Printf("%T\n", fa)
 	fmt.Printf("%T\n", fb)
 
-	fmt.Printf("%v\n", ca)				// (1.22233+0i)
+	fmt.Printf("%v\n", ca) // (1.22233+0i)
 	fmt.Printf("%T\n", cb)
-	
+
 	fmt.Printf("%T\n", ptr)
 
 	// type conversion

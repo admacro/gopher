@@ -7,7 +7,7 @@ func main() {
 
 	// classic for loop
 	for i := 0; i < 3; i++ {
-		fmt.Printf("Loop #%d\n", i + 1)
+		fmt.Printf("Loop #%d\n", i+1)
 	}
 
 	fmt.Println("---------------------")
@@ -36,10 +36,10 @@ func main() {
 
 	// break and continue acts the same like in other langs
 	for i := 1; i < 100; i++ {
-		if i % 2 == 0 {
+		if i%2 == 0 {
 			fmt.Printf("Loop #%d\n", i)
 			continue
-		} else if i % 17 == 0 {
+		} else if i%17 == 0 {
 			break
 		}
 	}
@@ -50,7 +50,7 @@ func main() {
 	// the first is the index, the second is a copy of the element at the index
 	names := []string{"Jack", "Helen", "May"}
 	for i, name := range names {
-		fmt.Printf("Loop #%d: %v\n", i + 1, name)
+		fmt.Printf("Loop #%d: %v\n", i+1, name)
 	}
 
 	// blank identifier _ is for variable not needed
@@ -64,4 +64,3 @@ func main() {
 		fmt.Printf("Index: %v\n", i)
 	}
 }
-

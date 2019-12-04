@@ -39,8 +39,7 @@ func main() {
 	// decimal, hexdecimal, and char value of first byte of ♥
 	pf("bytes[6]: dec(%v) hex(%x) char(%c)\n", bs[6], bs[6], bs[6])
 
-	pf("type of bytes: %T\n", bs)	// []uint8
-
+	pf("type of bytes: %T\n", bs) // []uint8
 
 	// byte slice ==> string
 	pl("\n# byte slice ==> string ----------")
@@ -49,7 +48,6 @@ func main() {
 
 	s = string(bs)
 	pf("string: %v\n", s)
-
 
 	// string ==> rune slice
 	pl("\n# string ==> rune slice ----------")
@@ -62,8 +60,7 @@ func main() {
 	// decimal, hexdecimal, and char value of ♥
 	pf("runes[6]: dec(%v) hex(%x) char(%c)\n", rs[6], rs[6], rs[6])
 
-	pf("type of runes: %T\n", rs)	// []int32
-
+	pf("type of runes: %T\n", rs) // []int32
 
 	// rune slice ==> string
 	pl("\n# rune slice ==> string ----------")
@@ -72,7 +69,6 @@ func main() {
 
 	s = string(rs)
 	pf("string: %v\n", s)
-
 
 	// byte slice ==> rune slice
 	pl("\n# byte slice ==> rune slice ----------")
@@ -86,8 +82,7 @@ func main() {
 	// decimal, hexdecimal, and char value of ♥
 	pf("runes[6]: dec(%v) hex(%x) char(%c)\n", rs[6], rs[6], rs[6])
 
-	pf("type of runes: %T\n", rs)	// []int32
-
+	pf("type of runes: %T\n", rs) // []int32
 
 	// rune slice ==> byte slice
 	pl("\n# rune slice ==> byte slice ----------")
@@ -101,8 +96,7 @@ func main() {
 	// decimal, hexdecimal, and char of the first byte of ♥
 	pf("bytes[6]: dec(%v) hex(%x) char(%c)\n", bs[6], bs[6], bs[6])
 
-	pf("type of bytes: %T\n", bs)	// []int32
-
+	pf("type of bytes: %T\n", bs) // []int32
 
 	// number of characters (runes)
 	pl("\n# number of characters ----------")
@@ -111,13 +105,11 @@ func main() {
 	pf("char count of byte slice: %v\n", utf8.RuneCount(bs))
 	pf("char count of rune slice: %v\n", len(rs))
 
-
 	// substring by character index
 	pl("\n# substring by character index ----------")
 	rs = []rune(s)
 	pf("%v\n", rs[5:7])
 	pf("%q\n", rs[5:7])
-
 
 	// given byte index that starts a char, find the index of the char
 	pl("\n# find char index by byte index ----------")
@@ -125,7 +117,6 @@ func main() {
 
 	pf("index of 好 in s: %v\n", utf8.RuneCountInString(s[0:i]))
 	pf("index of 好 in rs: %v\n", utf8.RuneCount(bs[0:i]))
-
 
 	// given random byte index, find the index that starts a char to
 	// which the random byte belongs
@@ -138,8 +129,8 @@ func main() {
 		}
 		return 0
 	}
-	pf("random byte index in byte slice: %v, char index: %v\n", 7, charIndex(bs, 7)) // 6 ♥
-	pf("random byte index in byte slice: %v, char index: %v\n", 9, charIndex(bs, 9)) // 7 好
+	pf("random byte index in byte slice: %v, char index: %v\n", 7, charIndex(bs, 7))   // 6 ♥
+	pf("random byte index in byte slice: %v, char index: %v\n", 9, charIndex(bs, 9))   // 7 好
 	pf("random byte index in byte slice: %v, char index: %v\n", 15, charIndex(bs, 15)) // 8 🀄
 
 	var charIndexInString = func(s string, i int) int {
@@ -150,10 +141,9 @@ func main() {
 		}
 		return 0
 	}
-	pf("random byte index in string: %v, char index: %v\n", 7, charIndexInString(s, 7)) // 6 ♥
-	pf("random byte index in string: %v, char index: %v\n", 9, charIndexInString(s, 9)) // 7 好
+	pf("random byte index in string: %v, char index: %v\n", 7, charIndexInString(s, 7))   // 6 ♥
+	pf("random byte index in string: %v, char index: %v\n", 9, charIndexInString(s, 9))   // 7 好
 	pf("random byte index in string: %v, char index: %v\n", 15, charIndexInString(s, 15)) // 8 🀄
-
 
 	pl("\n# loop through characters in string ----------")
 

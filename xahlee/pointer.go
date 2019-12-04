@@ -15,14 +15,14 @@ func main() {
 	// type of pointer
 	// if a variable's type is abc, then the type of its pointers is *abc
 	fmt.Printf("type of variable %T\n", city) // string
-	fmt.Printf("type of pointer: %T\n", p2c) // *string
+	fmt.Printf("type of pointer: %T\n", p2c)  // *string
 
 	// address of variable
 	fmt.Printf("address of variable: %v\n", p2c) // 0xc000010200
 
 	// get the value of the variable to which the pointer is pointing
 	// *pointer (dereferencing/pointer indirection)
-	fmt.Printf("*p2c = %#v\n", *p2c) // "shanghai"
+	fmt.Printf("*p2c = %#v\n", *p2c)                    // "shanghai"
 	fmt.Printf("(*p2c == city) => %#v\n", *p2c == city) // true
 
 	// pointer to struct
@@ -41,9 +41,8 @@ func main() {
 
 	// so, Go permits struct fields to be accessed through a
 	// struct pointer directly
-	ptr.x = 5 // update field of associated struct
+	ptr.x = 5                // update field of associated struct
 	fmt.Printf("%#v\n", pos) // main.Position{x:5, y:4}
-
 
 	// why use pointer?
 	// the purpose of using pointer is mostly for speeding up computation
@@ -55,8 +54,8 @@ func main() {
 		return x
 	}
 	var salut = "hello"
-	fmt.Println(f(salut))					// hello!!!
-	fmt.Println(salut)						// hello
+	fmt.Println(f(salut)) // hello!!!
+	fmt.Println(salut)    // hello
 
 	// pointer as argument
 	// passing pointer to a function doesn't do value copying
@@ -66,6 +65,6 @@ func main() {
 		*x += "!!!"
 		return *x
 	}
-	fmt.Println(fp(&salut))				// hello!!!
-	fmt.Println(salut)						// hello!!!
+	fmt.Println(fp(&salut)) // hello!!!
+	fmt.Println(salut)      // hello!!!
 }

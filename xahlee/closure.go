@@ -44,15 +44,15 @@ func main() {
 	}
 
 	var get, set = class(1)
-	fmt.Printf("get(): %v\n", get())	// get(): 1
+	fmt.Printf("get(): %v\n", get()) // get(): 1
 	fmt.Println("set(3)")
 	set(3)
-	fmt.Printf("get(): %v\n", get())	// get(): 3
+	fmt.Printf("get(): %v\n", get()) // get(): 3
 
 	var read, write = class(100)
-	fmt.Printf("read(): %v\n", read())	// read(): 100
+	fmt.Printf("read(): %v\n", read()) // read(): 100
 	fmt.Println("write(3000)")
 	write(3000)
-	fmt.Printf("read(): %v\n", read())	// read(): 3000
+	fmt.Printf("read(): %v\n", read()) // read(): 3000
 
 }

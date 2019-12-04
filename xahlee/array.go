@@ -5,11 +5,11 @@ import "fmt"
 func main() {
 	// [n]T is a type in Go
 	// it's an array of n values of type T
-	var names [3]string						// length is 3
+	var names [3]string // length is 3
 	names[0] = "James"
 
 	// an array's length (n) is part of its type, so arrays cannot be resized
-	fmt.Printf("%T\n", names)			// [3]string
+	fmt.Printf("%T\n", names) // [3]string
 
 	fmt.Printf("%d\n", len(names))
 	fmt.Printf("%d\n", cap(names)) // same as len for array
@@ -30,6 +30,6 @@ func main() {
 	// a[low:high]
 	//   the default for low is 0, and length(a) for high
 	var slice = cities[:]
-	fmt.Printf("%T\n", slice)			 // []string
+	fmt.Printf("%T\n", slice)      // []string
 	fmt.Printf("%d\n", len(slice)) // 3
 }

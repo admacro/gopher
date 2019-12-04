@@ -28,4 +28,3 @@ func main() {
 	fmt.Println(msg)
 	fmt.Println(msg == "I'm a book to be returned.") // true
 }
-

@@ -18,7 +18,7 @@ func multiply(x, y int) int {
 // at the top of the function body
 func divide(x, y int) (quotient int, remainder int) {
 	quotient = x / y
-	remainder = x - quotient * y
+	remainder = x - quotient*y
 
 	// return quotient, remainder
 
@@ -39,7 +39,7 @@ var sub = func(x, y int) int {
 
 func main() {
 	x, y := 1234, 56
-	fmt.Printf("%v + %v = %v\n", x, y, add(x, y)) // 1234 + 56 = 1290
+	fmt.Printf("%v + %v = %v\n", x, y, add(x, y))      // 1234 + 56 = 1290
 	fmt.Printf("%v * %v = %v\n", x, y, multiply(x, y)) // 1234 * 56 = 69104
 
 	var q, r = divide(x, y)
@@ -48,8 +48,8 @@ func main() {
 	fmt.Printf("%v - %v = %v\n", x, y, sub(x, y)) // 1234 - 56 = 1178
 
 	// apply function to value inline
-	var b = func(a int) int { return a + 1 } (x)
-	fmt.Println(b)								// 1235
+	var b = func(a int) int { return a + 1 }(x)
+	fmt.Println(b) // 1235
 
 	// nested function
 	var square = func(x int) int {

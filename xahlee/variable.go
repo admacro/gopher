@@ -3,8 +3,6 @@ package main
 
 import "fmt"
 
-
-
 // Outside a function, every statement begins with a keyword (var, func, and so on)
 // syntax error: non-declaration statement outside function
 // invalid_variable := 123
@@ -66,9 +64,10 @@ func main() {
 
 	// grouping variable declaration
 	var (
-		height float32; balance float64
+		height  float32
+		balance float64
 		married bool
-		titles []string							// ; can be omitted when it's at the end of line
+		titles  []string // ; can be omitted when it's at the end of line
 	)
 
 	// variables with initializers
@@ -82,12 +81,12 @@ func main() {
 	//   "" => for string type
 	//   false => for bool type
 	//   nil => for pointers, functions, interfaces, slices, channels, and maps
-	fmt.Printf("%#v\n", name)			// ""
-	fmt.Printf("%#v\n", age)			// 0
-	fmt.Printf("%#v\n", height)		// 0
-	fmt.Printf("%#v\n", balance)	// 0
-	fmt.Printf("%#v\n", married)	// false
-	fmt.Printf("%#v\n", titles)		// []string(nil)
+	fmt.Printf("%#v\n", name)    // ""
+	fmt.Printf("%#v\n", age)     // 0
+	fmt.Printf("%#v\n", height)  // 0
+	fmt.Printf("%#v\n", balance) // 0
+	fmt.Printf("%#v\n", married) // false
+	fmt.Printf("%#v\n", titles)  // []string(nil)
 
 	fmt.Printf("%#v, %#v\n", address, city) // "Shoreline", "Brisbane"
 
@@ -97,9 +96,9 @@ func main() {
 	name = "James"
 
 	// age = 35.1										// constant 35.1 truncated to integer
-	age = 35											// valid
-	age = 35.0											// valid
-	fmt.Printf("%#v\n", age)			// 35
+	age = 35                 // valid
+	age = 35.0               // valid
+	fmt.Printf("%#v\n", age) // 35
 
 	// floating point numbers
 	// check IEEE Standard 754 for more info on floating point numbers
@@ -110,16 +109,16 @@ func main() {
 	// https://www.cs.cornell.edu/~tomf/notes/cps104/floating.html
 
 	height = 123456.123456
-	fmt.Printf("%#v\n", height)		// 123456.125
-	fmt.Printf("%e\n", height)		// 1.234561e+05 (%e => scientific notation)
-	fmt.Printf("%f\n", height)		// 123456.125000 (decimal point but no exponent)
-	fmt.Printf("%g\n", height)		// 123456.125 (%e for large exponents, %f otherwise)
+	fmt.Printf("%#v\n", height) // 123456.125
+	fmt.Printf("%e\n", height)  // 1.234561e+05 (%e => scientific notation)
+	fmt.Printf("%f\n", height)  // 123456.125000 (decimal point but no exponent)
+	fmt.Printf("%g\n", height)  // 123456.125 (%e for large exponents, %f otherwise)
 
 	balance = 1234567890.123456789
-	fmt.Printf("%#v\n", balance)		// 1.2345678901234567e+09
-	fmt.Printf("%e\n", balance)		// 1.234568e+09
-	fmt.Printf("%f\n", balance)		// 1234567890.123457
-	fmt.Printf("%g\n", balance)		// 1.2345678901234567e+09
+	fmt.Printf("%#v\n", balance) // 1.2345678901234567e+09
+	fmt.Printf("%e\n", balance)  // 1.234568e+09
+	fmt.Printf("%f\n", balance)  // 1234567890.123457
+	fmt.Printf("%g\n", balance)  // 1.2345678901234567e+09
 
 	var arbitrary_number = 3.14
 	fmt.Printf("%T\n", arbitrary_number) // float64 (golang infers any float number as float64)
@@ -129,7 +128,6 @@ func main() {
 	// take multiple return values of a function
 	//   var x, y = f(a)
 	address, city = "2000 shoreline CT", "Brisbane"
-	fmt.Printf("%#v\n", address)	// "2000 shoreline CT"
-	fmt.Printf("%#v\n", city)			// "Brisbane"
+	fmt.Printf("%#v\n", address) // "2000 shoreline CT"
+	fmt.Printf("%#v\n", city)    // "Brisbane"
 }
-

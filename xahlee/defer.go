@@ -12,7 +12,7 @@ func main() {
 	fmt.Println("some initial work")
 	defer cleanup("mess of initial work")
 
-	for i:= 1; i <= 5; i++ {
+	for i := 1; i <= 5; i++ {
 		fmt.Printf("Process step %v\n", i)
 		defer cleanup(fmt.Sprintf("mess of step %v", i))
 	}
@@ -51,4 +51,3 @@ func main() {
 // cleaning up [mess of step 2]...
 // cleaning up [mess of step 1]...
 // cleaning up [mess of initial work]...
-

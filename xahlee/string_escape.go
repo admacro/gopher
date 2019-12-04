@@ -24,4 +24,3 @@ func main() {
 
 	fmt.Printf("s == es is %v", s == es)
 }
-

@@ -12,5 +12,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(b)								// different results always
+	fmt.Println(b) // different results always
 }

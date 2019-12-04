@@ -9,7 +9,7 @@ func printFileContent(filePath string) {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("data: %v\n",  string(data))
+	fmt.Printf("data: %v\n", string(data))
 }
 
 func main() {
@@ -37,7 +37,6 @@ func main() {
 	}
 
 	printFileContent(filePath)
-
 
 	// create file and then write to it step by step
 	file, err := os.Create(filePath)

@@ -64,10 +64,9 @@ func main() {
 	describe(i) // (123.45 main.F)
 	i.M()       // 123.45
 
-
 	// nil interface value
 	var ni I
-	describe(ni)									// (<nil> <nil>)
+	describe(ni) // (<nil> <nil>)
 
 	// No type inside the interface tuple to indicate which concrete method to
 	// call, thus runtime error:

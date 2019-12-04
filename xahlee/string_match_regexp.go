@@ -32,7 +32,7 @@ peeped into the book her sister was reading, but it had no pictures or
 conversations in it, «and what is the use of a book,» thought Alice «without
 pictures or conversation?».`
 
-	var patterns = []string{"Alice","Helen"}
+	var patterns = []string{"Alice", "Helen"}
 	var matched = stringMatchAnyRegexp(text, patterns)
 	fmt.Printf("Text match any regexp (%q) => %v\n", patterns, matched)
 }

@@ -42,7 +42,7 @@ func main() {
 	fmt.Printf("My score is %v.\n", grade(70))
 
 	n := 4
-	if x := 3; n > x {						// x := 3 is a short statement inside if clause
+	if x := 3; n > x { // x := 3 is a short statement inside if clause
 		fmt.Printf("OK")
 	}
 
@@ -58,18 +58,18 @@ func main() {
 
 	c := 1
 	switch c {
-	case 0, 1:										// multiple tests
+	case 0, 1: // multiple tests
 		fmt.Println("Binary")
-		fallthrough									// transfer control to the first statement of the next case
+		fallthrough // transfer control to the first statement of the next case
 	case 101:
-		fmt.Println("Mandatory")		// this line will be excuted
+		fmt.Println("Mandatory") // this line will be excuted
 	default:
-		fmt.Println("Done")					// this line will be ignored
+		fmt.Println("Done") // this line will be ignored
 	}
 
 	// without switch expression, each case expression just tests for true
 	// just like multiple ifelse
-	switch {											// same as `switch true`
+	switch { // same as `switch true`
 	case c < 1:
 		fmt.Println("Less")
 	case c == 1:

@@ -13,13 +13,13 @@ func main() {
 	}
 
 	fmt.Printf("%T\n", []byte("hello")) // []uint8 (byte slice)
-	fmt.Printf("%T\n", content)		// []uint8 (content is a byte slice)
+	fmt.Printf("%T\n", content)         // []uint8 (content is a byte slice)
 
-	fmt.Printf("%v\n", content)			// [84 104 101 32 71 111 32 ... ]
-	fmt.Printf("%#v\n", content)		// []byte{0x54, 0x68, 0x65, ... }
-	fmt.Printf("%q\n", content)			// "The Go programming language ... \n\n ... \n\n ..." (printed in one line)
+	fmt.Printf("%v\n", content)  // [84 104 101 32 71 111 32 ... ]
+	fmt.Printf("%#v\n", content) // []byte{0x54, 0x68, 0x65, ... }
+	fmt.Printf("%q\n", content)  // "The Go programming language ... \n\n ... \n\n ..." (printed in one line)
 
-	fmt.Printf("%v\n", string(content))			// "The Go programming language ..." (printed in natural reading format)
+	fmt.Printf("%v\n", string(content)) // "The Go programming language ..." (printed in natural reading format)
 
 	// read first n bytes
 	var getHeadBytes = func(filePath string, n int64) ([]byte, int64) {
@@ -46,7 +46,7 @@ func main() {
 			fileInfo.Name(), fileInfo.Size(), fileInfo.Mode())
 
 		var size = n
-		if fileInfo.Size() < n {		// Size() of FileInfo is int64
+		if fileInfo.Size() < n { // Size() of FileInfo is int64
 			size = fileInfo.Size()
 		}
 		var data = make([]byte, size, size)

@@ -4,7 +4,6 @@ import "fmt"
 import "path/filepath"
 import "os"
 
-
 func main() {
 
 	// path is root/file.ext
@@ -21,7 +20,7 @@ func main() {
 
 		filename := info.Name()
 		if info.IsDir() {
-			if filename == ".git" {		// ignore git metadata
+			if filename == ".git" { // ignore git metadata
 				return filepath.SkipDir
 			}
 			filename += "/"

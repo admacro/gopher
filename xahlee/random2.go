@@ -12,7 +12,7 @@ func main() {
 
 	fmt.Println()
 
-	fmt.Printf("rand.Intn(180) => %v\n", rand.Intn(180))	 // 121
+	fmt.Printf("rand.Intn(180) => %v\n", rand.Intn(180))   // 121
 	fmt.Printf("rand.Intn(5000) => %v\n", rand.Intn(5000)) // 408
-	fmt.Printf("rand.Intn(10) => %v\n", rand.Intn(10))		 // 7
+	fmt.Printf("rand.Intn(10) => %v\n", rand.Intn(10))     // 7
 }
