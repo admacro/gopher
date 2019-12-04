@@ -48,6 +48,7 @@ func ScaleF(v *Vertex, f float64) {
 
 // value receiver
 // Functions that take a value argument must take a value of that specific type
+// when v.ScaleV(f) is called, Go copies v and pass it to the method
 func (v Vertex) ScaleV(f float64) {
 	v.x = v.x * f
 	v.y = v.y * f
@@ -88,8 +89,15 @@ func main() {
 	ScaleF(&v, 0.618)							// must take a pointer, compare to above: v.Scale(f) and (&v).Scale(f)
 	fmt.Println(v)								// {3, 4}
 
+
+	// methods take value as receiver don't change the original
 	v = Vertex{3, 4}
 	v.ScaleV(0.618)
+	fmt.Println(v)								// {3, 4}
+
+	// As a convenience, Go interprets the statement p.Scale(f) as (*p).Scale(f)
+	p := &v
+	p.ScaleV(0.618)
 	fmt.Println(v)								// {3, 4}
 
 
