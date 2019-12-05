@@ -69,7 +69,7 @@ func WriteHtmlFile(imageStrEncoding string) {
 	html := fmt.Sprintf("<img src=\"data:image/png;base64,%v\">", imageStrEncoding)
 	imageBytes := []byte(html)
 	var perm = os.FileMode(0644)
-	err := ioutil.WriteFile("image.html", imageBytes, perm)
+	err := ioutil.WriteFile("show_pic.html", imageBytes, perm)
 
 	if err != nil {
 		panic(err)
