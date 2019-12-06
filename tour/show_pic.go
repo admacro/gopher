@@ -73,5 +73,7 @@ func WriteHtmlFile(imageStrEncoding string) {
 
 	if err != nil {
 		panic(err)
+	} else {
+		fmt.Println("file image.html successfully created")
 	}
 }
