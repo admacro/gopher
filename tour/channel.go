@@ -11,9 +11,9 @@ import (
 
 // You create channels using make:
 //   make(chan Type)
-//   Type is the type of the value you can send and receive with the channel
+//   Type is the type of the value you can send and receive with the channel chan
 
-// By default, sends (c <- v) and receive (v <-c) blocks until the other side is
+// By default, sends (c <- v) and receives (v <-c) block until the other side is
 // ready. This allows goroutines to synchronize without explicit locks or
 // condition variables.
 
