@@ -17,6 +17,11 @@ import (
 // ready. This allows goroutines to synchronize without explicit locks or
 // condition variables.
 
+// P.S.
+// gofmt favors the following formats when formatting the channel operator:
+//   when sending value to channel (space at both sides of <-): c <- v
+//   when receiving value from channel (space at the value side, not the channel side): v <-c
+
 func sum(n []int, c chan int) {
 	sum := 0
 	for _, v := range n {

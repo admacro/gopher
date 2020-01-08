@@ -31,7 +31,7 @@ func main() {
 	}
 
 	// hardcoded waiting time (0.5s)
-	// This waiting is necessary. Gorotunes are terminated when main() exists.
+	// This waiting is necessary, as gorotunes are terminated when main() exists.
 	// In this case the main() almost always exits before the goroutines ever start,
 	// and you won't be able to see any output from the goroutines without explicit waiting.
 	time.Sleep(500 * time.Millisecond)
