@@ -21,7 +21,10 @@ func fibonacci(n int, c chan int) {
 func main() {
 	c := make(chan int, 10)
 	go fibonacci(cap(c), c)
-	// receives values from the channel repeatedly until it is closed.
+
+	// receive values from the channel repeatedly until it is closed.
+	// note the syntax here: there is no <- operator, i is same as <-c
+	// in this sense, channels act as first-in-first-out queues.
 	for i := range c {
 		fmt.Println(i)
 	}
