@@ -1,3 +1,4 @@
+// https://golang.google.cn/ref/spec#Channel_types
 package main
 
 import (
