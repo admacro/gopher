@@ -1,3 +1,4 @@
+// https://golang.google.cn/ref/spec#Go_statements
 package main
 
 import (
