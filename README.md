@@ -5,7 +5,7 @@ Allez is the french word for go. This is where I learn Go, a programming languag
 - [The Go Programming Language Specification](spec)
 - [Xahlee's Golang Tutorial](xah)
 - [A Tour of Go](tour)
-- [The Go Programming Language](gopl)
+- [The Go Programming Language (book)](gopl)
 
 [spec]: https://golang.google.cn/ref/spec
 [xah]: http://xahlee.info/golang/golang_index.html
