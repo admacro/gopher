@@ -16,6 +16,12 @@ import (
 // synchronized. The `sync` package provides useful primitives, although you
 // don't need them much in Go as there is better choices (channel).
 
+
+// Launch and ignore
+// The go statement runs the function as usual, but doesn't make the caller wait.
+// It launches a goroutine.
+// The functionality is analogous to the & on the end of a shell command.
+
 func sayHi(from string, to string) {
 	fmt.Printf("%v: Hi %v!\n", from, to)
 }
