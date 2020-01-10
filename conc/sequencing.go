@@ -18,24 +18,32 @@ type Message struct {
 
 func main() {
 	c := fanIn(boring("Jack"), boring("Joe"))
+
 	for i := 0; i < 5; i++ {
-		message1 := <-c
-		fmt.Println(message1.content)
-		message2 := <-c
-		fmt.Println(message2.content)
-		message1.readReceipt <- true
-		message2.readReceipt <- true
+		message := <-c
+		fmt.Println(message.content)
+
+		// Now the receiver needs to do something with the message, so
+		// the sender (goroutine) has to wait for some time.
+		// After the receiver is done with the message, a receipt is
+		// sent back to the sender and the sender can then continue to
+		// send messages.
+		fmt.Println("Copy!")
+		nap()
+		message.readReceipt <- true
 	}
 	fmt.Println("You both are boring. I'm leaving.")
 }
 
+// now each speaker must wait for a receipt to
+// send the next message
 func boring(msg string) <-chan Message {
 	c := make(chan Message)
 	readReceipt := make(chan bool)
 	go func() {
 		for i := 0; ; i++ {
-			c <- Message{fmt.Sprintf("%s %d", msg, i), readReceipt}
-			time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
+			c <- Message{fmt.Sprintf("%s: %d", msg, i), readReceipt}
+			nap()
 			<-readReceipt // wait for read receipt
 		}
 	}()
@@ -46,7 +54,7 @@ func boring(msg string) <-chan Message {
 func fanIn(inputs ...<-chan Message) <-chan Message {
 	c := make(chan Message)
 	for i := range inputs {
-	input := inputs[i]
+		input := inputs[i]
 		go func() {
 			for {
 				c <- <-input
@@ -54,4 +62,8 @@ func fanIn(inputs ...<-chan Message) <-chan Message {
 		}()
 	}
 	return c
+}
+
+func nap() {
+	time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
 }
