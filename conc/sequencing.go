@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// [Go Concurrency Patterns](https://talks.golang.org/2012/concurrency.slide#17)
+// [Go Concurrency Patterns](https://talks.golang.org/2012/concurrency.slide#29)
 // Author: Rob Pike
 // -----------------------------------------------------------------------------
 
