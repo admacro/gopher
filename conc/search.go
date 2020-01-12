@@ -10,23 +10,17 @@ import (
 type Result string
 type Search func(query string) Result
 
-func fakeSearch(kind string) Search {
+func FakeSearch(kind string) Search {
 	return func(query string) Result {
 		time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
 		return Result(fmt.Sprintf("%v result for %v.", kind, query))
 	}
 }
 
-var (
-	Web   = fakeSearch("Web")
-	Image = fakeSearch("Image")
-	Video = fakeSearch("Video")
-)
-
 func ReplicateSearch(kind string, n int) (replicas []Search) {
 	replicas = make([]Search, n)
 	for i := range replicas {
-		replicas[i] = fakeSearch(fmt.Sprintf("%v-%d", kind, i+1))
+		replicas[i] = FakeSearch(fmt.Sprintf("%v-%d", kind, i+1))
 	}
 	return
 }
