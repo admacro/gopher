@@ -23,7 +23,7 @@ func main() {
 	}
 
 	// create a strut
-	var p = Person{"Joker", 40} // if filed names are omitted, all fields must be present in the order defined
+	var p = Person{"Joker", 40} // if field names are omitted, all fields must be present in the order defined
 	// var p = Person{"Joker"}				// err: too few values in Person literal
 	var pp = Person{} // this is ok
 
