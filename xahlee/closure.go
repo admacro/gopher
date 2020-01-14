@@ -13,13 +13,13 @@ import "fmt"
 // Each closure is bound to its own variables.
 
 // For example:
-//   1. a function f defines a local variable a and a local function g
-//   2. a is used in g
-//   3. f returns g
-//   4. f is called and result is assigned to h
-//   5. h is now a function that is g. all variables used by h, including a
+//   1. a function f defines a local variable x and a local function c
+//   2. x is used in c
+//   3. f returns c
+//   4. f is called and result is assigned to d
+//   5. d is now a function that is c. all variables used by d, including x
 //  still work, even though they were local variables of f
-//   6. h is called a closure
+//   6. d is called a closure
 
 // In practice, closure means you can create a function that maintains a state,
 // without using global variable.
