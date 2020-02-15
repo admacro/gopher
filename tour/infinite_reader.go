@@ -3,12 +3,12 @@ package main
 
 import "fmt"
 
-type MyReader struct {}
+type MyReader struct{}
 
 // emits an infinite stream of the ASCII character 'A'
 func (r MyReader) Read(b []byte) (n int, err error) {
 	var a = "A"
-	for i, _ := range b {
+	for i := range b {
 		b[i] = a[0]
 		n++
 	}

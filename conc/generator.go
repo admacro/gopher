@@ -21,7 +21,7 @@ func main() {
 	fmt.Println("You are boring. I'm leaving.")
 }
 
-func boring(msg string) (chan string) {
+func boring(msg string) chan string {
 	c := make(chan string)
 	go func() {
 		for i := 0; ; i++ {
@@ -31,4 +31,3 @@ func boring(msg string) (chan string) {
 	}()
 	return c
 }
-

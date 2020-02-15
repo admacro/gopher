@@ -15,7 +15,7 @@ func main() {
 	var s = "♥ is heart"
 	fmt.Printf("%#v\n", s[0:2]) // "\xe2\x99" (first two bytes of ♥)
 	fmt.Println(s[0:3])         // ♥ (s[0] to s[3-1])
-	fmt.Println(s[4:len(s)])    // is heart
+	fmt.Println(s[4:])          // is heart (same as s[4:len(s)])
 
 	// index must be within range, from 0 to length of the string
 	// fmt.Println(s[3:20]) // runtime error: slice bounds out of range ...

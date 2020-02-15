@@ -22,7 +22,7 @@ func main() {
 	// so when goroutine runs, aa might have changed
 	// bb is a new instance and is only used for the current iteration
 	// so when goroutine runs, bb still holds the same value as assigned
-	for _, aa:= range a {
+	for _, aa := range a {
 		bb := aa
 		go func() {
 			fmt.Printf("aa: %d \n", aa)

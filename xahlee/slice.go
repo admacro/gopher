@@ -51,7 +51,7 @@ func main() {
 	print_slice_info(followers, "followers") // length: 3, capacity: 5
 
 	// slice item assignment
-	for i, _ := range followers {
+	for i := range followers {
 		followers[i] = fmt.Sprintf("follower #%d", i+1)
 	}
 	print_slice_info(followers, "followers") // length: 5, capacity: 5

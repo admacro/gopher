@@ -96,7 +96,7 @@ func main() {
 		return s
 	}
 	var n = make([]int, 100, 100)
-	for i, _ := range n {
+	for i := range n {
 		n[i] = i + 1
 	}
 	// pass slice/array to function

@@ -27,7 +27,7 @@ func main() {
 	kids := []string{"Jack", "Emma", "Johnny", "Cindy"}
 	for i, kid := range kids {
 		// time.Millisecond is of type time.Duration
-		time.Sleep(time.Duration(200 * i) * time.Millisecond)
+		time.Sleep(time.Duration(200*i) * time.Millisecond)
 		go sayHi(kid, newKid)
 	}
 

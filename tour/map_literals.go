@@ -16,7 +16,7 @@ func main() {
 
 	// literals
 	var n = map[string]Vertex{
-		"wellington": Vertex{
+		"wellington": {
 			41.2925488, 174.7733654,
 		},
 		// If the top-level type is just a type name, you
