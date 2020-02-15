@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
-import "os"
+import (
+	"fmt"
+	"os"
+)
 
 // I'm just curious to find out whether this works on a 32bit system
 // While I'm on a 64bit Darwin system

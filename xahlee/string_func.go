@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 	// len(string) returns the number of bytes in string

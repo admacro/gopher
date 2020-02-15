@@ -1,8 +1,10 @@
 package main
 
-import "fmt"
-import "reflect"
-import "strings"
+import (
+	"fmt"
+	"reflect"
+	"strings"
+)
 
 // print slice length, capacity, and items line by line
 func print_slice_info(s []string, title string) {

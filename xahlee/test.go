@@ -1,8 +1,10 @@
 // Go programs start running in package named "name", with function "main"
 package main
 
-import "fmt"
-import "math"
+import (
+	"fmt"
+	"math"
+)
 
 // line comment start with two slashes
 /* block comment

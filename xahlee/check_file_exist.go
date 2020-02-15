@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
-import "os"
+import (
+	"fmt"
+	"os"
+)
 
 func fileExist(path string) bool {
 	// according to

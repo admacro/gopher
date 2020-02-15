@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
-import "crypto/rand"
+import (
+	"crypto/rand"
+	"fmt"
+)
 
 func main() {
 	// real random numbers or crypotgraphically random numbers

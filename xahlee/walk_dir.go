@@ -1,8 +1,10 @@
 package main
 
-import "fmt"
-import "path/filepath"
-import "os"
+import (
+	"fmt"
+	"os"
+	"path/filepath"
+)
 
 func main() {
 

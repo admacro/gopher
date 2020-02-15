@@ -1,8 +1,10 @@
 package main
 
-import "fmt"
-import "os"
-import "os/exec"
+import (
+	"fmt"
+	"os"
+	"os/exec"
+)
 
 func main() {
 	dir := "/Users/james/prog"

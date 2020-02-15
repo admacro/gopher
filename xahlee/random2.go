@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
-import "math/rand"
+import (
+	"fmt"
+	"math/rand"
+)
 
 func main() {
 	// make the same calls as in random.go, but in different order

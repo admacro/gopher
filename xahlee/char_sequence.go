@@ -1,8 +1,10 @@
 // http://xahlee.info/golang/golang_char_sequence.html
 package main
 
-import "fmt"
-import "unicode/utf8"
+import (
+	"fmt"
+	"unicode/utf8"
+)
 
 // char sequence in golang can be represented in 3 different formats
 //   1. string (immutable byte sequence)

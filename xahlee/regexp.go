@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
-import "regexp"
+import (
+	"fmt"
+	"regexp"
+)
 
 func main() {
 	var text = `Alice was beginning to get very tired of sitting by her

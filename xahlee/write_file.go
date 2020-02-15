@@ -1,8 +1,10 @@
 package main
 
-import "fmt"
-import "io/ioutil"
-import "os"
+import (
+	"fmt"
+	"io/ioutil"
+	"os"
+)
 
 func printFileContent(filePath string) {
 	data, err := ioutil.ReadFile(filePath)
