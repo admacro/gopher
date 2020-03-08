@@ -27,7 +27,6 @@ func main() {
 			return
 		}
 	}
-	fmt.Println("You both are boring. I'm leaving.")
 }
 
 func fanIn(input1, input2 <-chan string) <-chan string {

@@ -25,6 +25,7 @@ func main() {
 	for _, aa := range a {
 		bb := aa
 		go func() {
+			// loopcloure: loop variable aa captured by func literal
 			fmt.Printf("aa: %d \n", aa)
 			fmt.Printf("bb: %d \n", bb)
 		}()
