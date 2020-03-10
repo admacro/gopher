@@ -31,17 +31,17 @@ type Vertexer interface {
 	// Scale(f float64)
 }
 
-func main() {
-	var vter Vertexer
-	v := Vertex{3, 4}
-	vter = &v
-	fmt.Println(vter.Abs())
-}
-
 type Vertex struct {
 	x, y float64
 }
 
 func (v *Vertex) Abs() float64 {
 	return math.Sqrt(v.x*v.x + v.y*v.y)
+}
+
+func main() {
+	var vter Vertexer
+	v := Vertex{3, 4}
+	vter = &v
+	fmt.Println(vter.Abs())
 }

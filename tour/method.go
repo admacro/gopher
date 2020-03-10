@@ -15,13 +15,16 @@ type Vertex struct {
 // the receiver appears between the func keyword and the method name
 // in the case, the method Abs() has a receiver of type Vertex named v
 // the return type of the method appears after the method name
+//
+// method must have exactly one `receiver`
 func (v Vertex) Abs() float64 {
 	return math.Sqrt(v.x*v.x + v.y*v.y)
 }
 
 // methods are functions
 // a method is just a funcion with a receiver argement
-// this is simpler in regular function syntxa
+//
+// this is simpler in regular function syntax
 // the functionality is the same as above
 // but you need to call it in the form: Abs(v)
 func Abs(v Vertex) float64 {
@@ -56,7 +59,7 @@ func (v Vertex) ScaleV(f float64) {
 }
 
 // methods can also be defined on non-struct types
-// methods can only declared with a receiver whose type is defined in
+// methods can only be declared with a receiver whose type is defined in
 // the same package as the method
 // this also excludes the built-in types, such as int, map, etc.
 type MyFloat float64
@@ -83,7 +86,7 @@ func main() {
 	fmt.Println(v)    // {1.145772 1.527696}
 
 	v = Vertex{3, 4}
-	// ScaleF(v, 0.618)							// cannot use v (type Vertex) as type *Vertex in argument to ScaleF
+	// ScaleF(v, 0.618) // cannot use v (type Vertex) as type *Vertex in argument to ScaleF
 	ScaleF(&v, 0.618) // must take a pointer, compare to above: v.Scale(f) and (&v).Scale(f)
 	fmt.Println(v)    // {3, 4}
 
