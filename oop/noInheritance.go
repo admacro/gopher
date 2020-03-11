@@ -33,7 +33,7 @@ type Dog struct {
 }
 
 func (a *Dog) Walk() {
-	fmt.Println("Dog walking...")
+	fmt.Printf("%s running...\n", a.name)
 }
 
 func main() {
@@ -44,6 +44,9 @@ func main() {
 	c.Walk() // Without forwarding method: c.Walk undefined (type *Cat has no field or method Walk)
 	c.animal.Walk()
 
+	// the field name of an embededded type is same as the name of the type
+	// but if you put `Animal Animal` in the `Dog` struct, that'll have the
+	// same effect as a composition `a Animal`
 	d := Dog{Animal: Animal{name: "Dog"}}
 	d.Walk()
 }
