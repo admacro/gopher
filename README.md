@@ -27,6 +27,7 @@ structure. [More on GOPATH][gopath]
 - [A Tour of Go][tour]
 - [Go Concurrency Patterns (slides)][patterns]
 - [Writing web application in Go][gowiki]
+- [Object-oriented programming without inheritance][oop]
 
 ### Other references
 - [The Go Programming Language (book)][gopl]
@@ -39,4 +40,5 @@ structure. [More on GOPATH][gopath]
 [tour]: https://tour.golang.org/list
 [patterns]: https://talks.golang.org/2012/concurrency.slide
 [gowiki]: https://github.com/admacro/gowiki
+[oop]: https://yourbasic.org/golang/inheritance-object-oriented/
 [gopl]: https://www.gopl.io
