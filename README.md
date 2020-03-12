@@ -18,17 +18,25 @@ code. If not set, `GOPATH` defaults to `~/go`. To see the value of
 `workspace` of Go. Each directory in `GOPATH` must have a prescribed
 structure. [More on GOPATH][gopath]
 
-## References
+## WIP
 - [The Go Programming Language Specification][spec]
+- [Effective Go][effective]
+
+## Done
 - [Xahlee's Golang Tutorial][xah]
 - [A Tour of Go][tour]
-- [The Go Programming Language (book)][gopl]
 - [Go Concurrency Patterns (slides)][patterns]
+- [Writing web application in Go][gowiki]
 
-[spec]: https://golang.google.cn/ref/spec
-[xah]: http://xahlee.info/golang/golang_index.html
-[tour]: https://tour.golang.org/list
-[gopl]: https://www.gopl.io
-[patterns]: https://talks.golang.org/2012/concurrency.slide
+## Other references
+- [The Go Programming Language (book)][gopl]
+
 [installer]: https://www.golang.org/dl
 [gopath]: https://golang.org/cmd/go/#hdr-GOPATH_environment_variable
+[spec]: https://golang.google.cn/ref/spec
+[effective]: https://golang.org/doc/effective_go.html
+[xah]: http://xahlee.info/golang/golang_index.html
+[tour]: https://tour.golang.org/list
+[patterns]: https://talks.golang.org/2012/concurrency.slide
+[gowiki]: https://github.com/admacro/gowiki
+[gopl]: https://www.gopl.io
