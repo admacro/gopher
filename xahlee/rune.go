@@ -31,6 +31,8 @@ func main() {
 	var newline = '\n'
 	var heart_u = '\u2665'     // same as '♥'
 	var zhong_u = '\U0001f004' // same as '🀄'
+	var aHex = '\x61'          // \x + two hexdecimal digits
+	var aOct = '\141'          // \ + three octal digits
 
 	// print rune in decimal, hex, and unicode notation
 	fmt.Printf("dec: %d, hex: %x, unicode notation: %U\n", heart, heart, heart)
@@ -39,6 +41,8 @@ func main() {
 	fmt.Printf("%T\n", a) // int32
 
 	fmt.Printf("%c\n", a)     // print char as is
+	fmt.Printf("%c\n", aHex)  // print char as is
+	fmt.Printf("%c\n", aOct)  // print char as is
 	fmt.Printf("%q\n", heart) // print in golang syntax (rune syntax)
 	fmt.Printf("%U\n", zhong) // print as Unicode notation (with upper case for a-f)
 

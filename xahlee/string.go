@@ -3,12 +3,14 @@ package main
 import "fmt"
 
 func main() {
+	// interpreted string literal
 	// rules for literal string in golang is same as in Java
 	var heart = "♥" // ♥(U+2665): E2 99 A5
 	var msg = heart + " is a heart"
 	fmt.Println(msg)
 	fmt.Println("\"use backslash \\ for escaping\"\nnew line after quote")
 
+	// raw string literal
 	// grave accent char `
 	var anything = `anything ~!@#$%^&*(){}?+|\
       including new line
@@ -23,6 +25,11 @@ func main() {
 	fmt.Println("\x41" == "A")
 	fmt.Println("\xE2\x99\xA5" == heart) // true
 	fmt.Println("\xE2\x99" == heart)     // false
+
+	// backslash escapes interpreted as they are in rune literals with the same restrictions.
+	// (except that \' is illegal and \" is legal)
+	fmt.Println("\u2665" == "\xE2\x99\xA5") // true
+	fmt.Println("\x61" == "\141")           // true
 
 	// s[n] returns the nth byte of of string s
 	fmt.Printf("%#v\n", heart[0]) // 0xe2
