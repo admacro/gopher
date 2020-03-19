@@ -100,6 +100,11 @@ func main() {
 	p.ScaleV(0.618)
 	fmt.Println(v) // {3, 4}
 
+	// The method set of the corresponding pointer type *T is the set of all methods
+	// declared with receiver *T or T (that is, it also contains the method set of T).
+	// Thus the method set of type *Vertex has two methods: Abs() and ScaleV(float64)
+	fmt.Println(p.Abs()) // 5
+
 	var f MyFloat = 123.4
 	fmt.Println(f.Abs())
 	f = -123.4
