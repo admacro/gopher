@@ -18,6 +18,16 @@ func main() {
 	fmt.Println(anything)
 
 	// Golang string is a sequence of bytes, not characters.
+	// A byte is an alias for uint8 (unsigned integers: 0~255)
+	// You can construct a string from a sequence of bytes
+	bytes := []byte{71, 111, 108, 97, 110, 103}
+	fmt.Println(bytes)         // [71 111 108 97 110 103]
+	fmt.Println(string(bytes)) // Golang
+	// You can also represent byte values in octal (0o/0O) or hexadecimal (0x/0X)
+	bytes := []byte{0o107, 111, 108, 0x61, 110, 103}
+	fmt.Println(bytes)         // [71 111 108 97 110 103]
+	fmt.Println(string(bytes)) // Golang
+
 	// Go string can contain any Unicode character, and also byte
 	// sequences that is not valid encoding of any Unicode character.
 	// In Go, each character is stored as 1 to 4 bytes by utf8 encoding.
