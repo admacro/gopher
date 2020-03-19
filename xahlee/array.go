@@ -1,3 +1,4 @@
+// https://golang.org/ref/spec#Array_types
 package main
 
 import "fmt"
@@ -10,6 +11,19 @@ func main() {
 
 	// an array's length (n) is part of its type, so arrays cannot be resized
 	fmt.Printf("%T\n", names) // [3]string
+
+	// array types are always one-dimentional
+	// array length must evaluate to a non-negative constant representable by
+	// a value of int
+	// array length is evaluated at compile time
+	const N = 2
+	var matrix [2][2 * N]*struct {
+		x int
+		y [3 * N]byte
+	}
+	fmt.Printf("%T\n", matrix)       // [2][4]*struct { x int; y [6]uint8 }
+	fmt.Printf("%T\n", matrix[0])    // [4]*struct { x int; y [6]uint8 }
+	fmt.Printf("%T\n", matrix[0][0]) // *struct { x int; y [6]uint8 }
 
 	fmt.Printf("%d\n", len(names))
 	fmt.Printf("%d\n", cap(names)) // same as len for array

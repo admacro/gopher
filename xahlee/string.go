@@ -46,6 +46,9 @@ func main() {
 	fmt.Printf("%#v\n", heart[1]) // 0x99
 	fmt.Printf("%#v\n", heart[2]) // 0xa5
 
+	// It is illegal to take the address of elements of the byte sequence of a string
+	// fmt.Println(&heart[1]) // invalid
+
 	// Same as Python: heart[0] => '\xe2'
 	// Different with Ruby: heart[0] => ♥
 	fmt.Println(heart[0] == msg[0])
