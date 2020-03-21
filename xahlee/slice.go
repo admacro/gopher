@@ -1,3 +1,4 @@
+// https://golang.org/ref/spec#Slice_types
 package main
 
 import (
@@ -16,16 +17,18 @@ func print_slice_info(s []string, title string) {
 }
 
 func main() {
-	// Slice is like array, but length can be changed (array length is fixed).
-	// It's is a dynamically-sized, flexible view into the elements of an array.
+	// A slice is a descriptor for a segment of contiguous elements of an underlying array.
+	// It's essentially a reference to a segment of arary.
+	// It's a dynamically-sized, flexible view into the elements of an array.
+	// It's like array, but its length can be changed (array length is fixed).
 	// In practice, slices are much more common than arrays.
 	// Slice is similar to ArrayList in Java.
 
 	// []type => slice
 	// [n]type => array
 
-	// Golang slice is essentially a reference to a segment of arary.
-	// this creates [3]string{"Java", "Go", "Ruby"} then builds a slice that references it
+	// this firstly creates a hidden array: [3]string{"Java", "Go", "Ruby"}
+	// then builds a slice that references it
 	var langs = []string{"Java", "Go", "Ruby"}
 
 	fmt.Printf("Type of langs: %T\n", langs) // []string
@@ -38,7 +41,13 @@ func main() {
 
 	print_slice_info(langs, "langs") // length: 3, capacity: 3
 
-	// create slice with 'make'
+	// To create slice, use the built-in function `make`
+	// A slice created with make always allocates a new, hidden array to which
+	// the returned slice value refers.
+	// so the following two expressions are equivalent:
+	//   make([]type, length, capacity) (e.g. make([]int, 5, 10))
+	//   new([capacity]type)[0:length] (e.g. new([10]int)[0:5])
+
 	// make([]type, count_n) => creates a slice of count_n items of type
 	// capacity defaults to len if not specified
 	var fingers = make([]string, 5)
@@ -46,11 +55,10 @@ func main() {
 
 	// make([]type, count_n, capacity_m) => with capacity of capacity_m items
 	var followers = make([]string, 3, 5)
+	print_slice_info(followers, "followers") // length: 3, capacity: 5
 
 	// at any time, 0 <= length <= capacity
 	// var followers = make([]string, 6, 5) // err: len larger than cap in make([]string)
-
-	print_slice_info(followers, "followers") // length: 3, capacity: 5
 
 	// slice item assignment
 	for i := range followers {
@@ -82,11 +90,13 @@ func main() {
 	followers = reflect.Append(slice, item1, item2).Interface().([]string)
 	print_slice_info(followers, "followers") // length: 7, capacity: 10 (cap is doubled, was 5)
 
-	// A slice does not store any data, it just describes a section of an
-	// underlying array.
+	// A slice, once initialized, is always associated with an underlying array
+	// that holds its elements. A slice therefore does not store any data but
+	// shares storage with its array and with other slices of the same array.
+	//
 	// Changing the elements of a slice modifies the corresponding elements of
-	// its underlying array.
-	// Other slices that share the same underlying array will see those changes.
+	// its underlying array. Other slices that share the same underlying array
+	// will see those changes.
 
 	// slice of slice
 	// s[a:b] returns a slice of s from index a (included) to b (excluded)
