@@ -42,9 +42,9 @@ func main() {
 	print_slice_info(langs, "langs") // length: 3, capacity: 3
 
 	// To create slice, use the built-in function `make`
-	// A slice created with make always allocates a new, hidden array to which
+	// A slice created with `make` always allocates a new, hidden array to which
 	// the returned slice value refers.
-	// so the following two expressions are equivalent:
+	// So the following two expressions are equivalent:
 	//   make([]type, length, capacity) (e.g. make([]int, 5, 10))
 	//   new([capacity]type)[0:length] (e.g. new([10]int)[0:5])
 
