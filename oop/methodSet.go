@@ -1,3 +1,4 @@
+// https://golang.org/ref/spec#Method_sets
 package main
 
 import "fmt"
@@ -19,7 +20,7 @@ func (t *T) ReceivePointer() {
 }
 
 func main() {
-	// method set of type T includes only methods with a value receiver: ReceiveValue()
+	// method set of type T includes all methods declared with receiver T: ReceiveValue()
 	t := T{}
 	t.ReceiveValue()
 	fmt.Printf("T: %#v\n", t)
@@ -35,17 +36,19 @@ func main() {
 	(&t).ReceivePointer()
 	fmt.Printf("T: %#v\n", t)
 
+	// --------------------------------
 	// And, ...
 	// Similar things happen vice versa
+	// --------------------------------
 
-	// method set of type *T includes only methods with a pointer receiver: ReceivePointer()
+	// method set of type *T includes all methods declared with receiver *T or T (that is,
+	// it also contains the method set of T): Receivepointer() and ReceiveValue()
 	pt := &T{}
 	pt.ReceivePointer()
 	fmt.Printf("T: %#v\n", pt)
 
-	// But, how can t call ReceiveValue()?
-	// No, it can't! That's the truth. But why?
-	// Because, AUTOMATICALLY!
+	// But, how?
+	// Again, AUTOMATICALLY!
 	// Go compiler interprets pt as *pt when calling ReceiveValue() as the method has a value receiver;
 	// also, *pt (the value), is passed to the method, not pt (the pointer).
 
@@ -54,15 +57,8 @@ func main() {
 	(*pt).ReceiveValue()
 	fmt.Printf("T: %#v\n", pt)
 
+	// --------------------------------
 	// TODO
 	// Easy, right?
 	// Not so much when you know interface and the concept of addressable value
-}
-
-type S struct {
-	T
-}
-
-func NewS() S {
-	return S{}
 }
