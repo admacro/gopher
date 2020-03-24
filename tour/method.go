@@ -33,7 +33,7 @@ func Abs(v Vertex) float64 {
 
 // methods can be defined with pointer receiver
 // *T is the type of the receiver
-// methods with pointer receivers can modify the value to wihch the receiver
+// methods with pointer receivers can modify the value to which the receiver
 // points
 // it's very common to modify the receiver of a method, so pointer receivers
 // are more common than value receivers which are just copies of the receivers

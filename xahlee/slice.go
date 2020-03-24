@@ -62,11 +62,11 @@ func main() {
 
 	// slice item assignment
 	for i := range followers {
-		followers[i] = fmt.Sprintf("follower #%d", i+1)
+		followers[i] = fmt.Sprintf("assignment #%d", i+1)
 	}
 	print_slice_info(followers, "followers") // length: 5, capacity: 5
 
-	// add more items beyond slice length
+	// add more items beyond slice length but within capacity
 	// reflect.Append(s Value, x ...Value) Value
 	// Append is a variadic function which means x can be more than one arguments
 	// Value is the reflection interface to a Go value
@@ -75,18 +75,18 @@ func main() {
 		// followers[i] = fmt.Sprintf("follower #%d", i + 1)
 
 		slice := reflect.ValueOf(followers)
-		item := reflect.ValueOf(fmt.Sprintf("follower #%d", i+1))
+		item := reflect.ValueOf(fmt.Sprintf("beyond length #%d", i+1))
 		followers = reflect.Append(slice, item).Interface().([]string)
 	}
 	print_slice_info(followers, "followers") // length: 5, capacity: 5
 
-	// append multiple items beyond slice capacity
+	// append multiple items beyond slice length and capacity
 	// when you append beyond capacity, golang automatically grows the capacity
 	// capacity is for efficiency reasons, best to always create slice with capacity
 	// http://xahlee.info/golang/golang_slice.html
 	slice := reflect.ValueOf(followers)
-	item1 := reflect.ValueOf(fmt.Sprintf("follower #%d", 101))
-	item2 := reflect.ValueOf(fmt.Sprintf("follower #%d", 102))
+	item1 := reflect.ValueOf(fmt.Sprintf("beyond capacity #%d", 101))
+	item2 := reflect.ValueOf(fmt.Sprintf("beyond capacity #%d", 102))
 	followers = reflect.Append(slice, item1, item2).Interface().([]string)
 	print_slice_info(followers, "followers") // length: 7, capacity: 10 (cap is doubled, was 5)
 
@@ -109,8 +109,14 @@ func main() {
 	leaders[0] = "vip leader"
 	print_slice_info(followers, "followers") // followers[4]: "vip leader"
 
+	// Append more items to slice
+	//
+	// func append(slice []Type, elems ...Type) []Type
+	//     appends elems to the end of slice, and returns the updated slice without modifying the original slice
+	//     a new underlying array will be created if there is no sufficient capacity
+	//
 	// new_slice = append(slice, item1, item2 ...) // ... means any number of items
-	// new_slice = append(slice1, slice2...) // slice... is a syntax
+	// new_slice = append(slice1, slice2...) // slice... is a syntax which means to unpack elements in slice2
 	var titles = make([]string, 3, 5)
 	var new_titles = append(titles, "principle")
 	print_slice_info(titles, "titles")
