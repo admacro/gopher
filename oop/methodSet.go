@@ -19,6 +19,14 @@ func (t *T) ReceivePointer() {
 	t.y++
 }
 
+func newT() T {
+	return T{}
+}
+
+func newPointerT() *T {
+	return &T{}
+}
+
 func main() {
 	// method set of type T includes all methods declared with receiver T: ReceiveValue()
 	t := T{}
@@ -41,7 +49,7 @@ func main() {
 	// Similar things happen vice versa
 	// --------------------------------
 
-	// method set of type *T includes all methods declared with receiver *T or T (that is,
+	// Method set of type *T includes all methods declared with receiver *T or T (that is,
 	// it also contains the method set of T): Receivepointer() and ReceiveValue()
 	pt := &T{}
 	pt.ReceivePointer()
@@ -58,7 +66,17 @@ func main() {
 	fmt.Printf("T: %#v\n", pt)
 
 	// --------------------------------
-	// TODO
-	// Easy, right?
-	// Not so much when you know interface and the concept of addressable value
+	// When method receiver is not a variable, Go compiler will not do the auto-interpretation above.
+	// TODO Why? Because the receiver cannot be referenced by & or dereferenced by *?
+	// --------------------------------
+
+	// newT() returns a value of type T
+	// Method set of type T includes promoted methods with receiver T, but not *T
+	newT().ReceiveValue()
+	// newT().ReceivePointer() // error: ReceiverPointer is not in method set of T
+
+	// newPointerT() returns a value of type *T
+	// Method set of type *T includes promoted methods with receiver T or *T
+	newPointerT().ReceiveValue()
+	newPointerT().ReceivePointer()
 }
