@@ -18,10 +18,6 @@ func main() {
 		age  int
 	}
 
-	type Position struct {
-		x, y int
-	}
-
 	// create a strut
 	var p = Person{"Joker", 40} // if field names are omitted, all fields must be present in the order defined
 	// var p = Person{"Joker"}				// err: too few values in Person literal
@@ -36,4 +32,11 @@ func main() {
 	fmt.Println(bb)                           // {baby 0} ommited field will have zero value of its type
 	bb.age = 3                                // modify/update/fill struct field
 	fmt.Printf("{%v, %v}\n", bb.name, bb.age) // {baby, 3}
+
+	// create an anonymous struct without specifying a name
+	st := struct {
+		a int
+		b string
+	}{1, "hello"}
+	fmt.Println(st) // {1 hello}
 }
