@@ -24,7 +24,7 @@ func main() {
 	// get value
 	fmt.Println(p["mom"]) // 48
 
-	// map[k] returns two values
+	// In fact, map[k] returns two values, but the second can be omitted if you don't need it
 	// 1st is the associated value
 	// 2nd is true if k exist, else false
 	var val, exist = p["dad"]

@@ -16,6 +16,9 @@ func (h *Human) Introduce() {
 	fmt.Printf("I'm %s. I'm %d years old.\n", h.Gender, h.Age)
 }
 
+// is Man an alias for Human? No.
+// type alias works like this: type T1 = T2
+// see more at https://yourbasic.org/golang/type-alias/
 type Man Human
 
 // overrides Human#Introduce()
