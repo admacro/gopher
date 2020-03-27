@@ -15,6 +15,13 @@ func main() {
 	// a nil map has no keys, nor can keys be added
 	m["a"] = 1 // panic: assignment to entry in nil map
 
+	// key type
+	// The comparison operators == and != must be fully defined for operands of
+	// the key type; thus the key type must not be a function, map, or slice.
+	// If the key type is an interface type, these comparison operators must be
+	// defined for the dynamic key values; failure will cause a run-time panic.
+	// => See oop/interfaceMap.go for code example
+
 	// literal map
 	var p = map[string]int{"dad": 50, "mom": 48}
 	fmt.Printf("%#v\n", p) // map[string]int{"dad":50, "mom":48}
