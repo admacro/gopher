@@ -28,6 +28,10 @@ func divide(x, y int) (quotient int, remainder int) {
 	return
 }
 
+// a function can be declared without a body, such a function
+// is implemented outside Go, e.g. an assembly routine
+func ImplementedExternally(x, y, z int) string
+
 // function is a value
 // it can be
 //  1. assgined to a variable
