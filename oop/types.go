@@ -90,4 +90,11 @@ func main() {
 	// define Age as int and associate a method BirthYear with it
 	a := Age(23)
 	fmt.Println(a.BirthYear())
+
+	// assignability
+	// https://golang.org/ref/spec#Assignability
+	// b and type of 3.14 (float64) have identical underlying types (float64),
+	// at float64 is not a defined type.
+	var b Pi = 3.14
+	fmt.Println(b)
 }
