@@ -17,13 +17,17 @@ type PointerT1 *T1
 
 // PointerT1 is a defined type, but it's a pointer
 // error: invalid receiver type PointerT1 (PointerT1 is a pointer type)
-// func (pt PointerT1) TestPt() { fmt.Println("test") }
+// func (pt PointerT1) MethodPt() { fmt.Println("test") }
 
-func (r T1) TestT1()         { fmt.Printf("method receiver type is %T\n", r) }
-func (r *T1) TestT1Pointer() { fmt.Printf("method receiver type is %T\n", r) }
+func (r T1) MethodT1()         { fmt.Printf("method receiver type is %T\n", r) }
+func (r *T1) MethodT1Pointer() { fmt.Printf("method receiver type is %T\n", r) }
+
+// method receiver identifier may be omitted if not used
+func (*T1) NoReceiverReferencing() { fmt.Println("This method does not reference receiver.") }
 
 func main() {
 	t1 := T1{}
-	t1.TestT1()
-	t1.TestT1Pointer()
+	t1.MethodT1()
+	t1.MethodT1Pointer()
+	t1.NoReceiverReferencing()
 }

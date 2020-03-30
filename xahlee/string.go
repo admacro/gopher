@@ -24,7 +24,7 @@ func main() {
 	fmt.Println(bytes)         // [71 111 108 97 110 103]
 	fmt.Println(string(bytes)) // Golang
 	// You can also represent byte values in octal (0o/0O) or hexadecimal (0x/0X)
-	bytes := []byte{0o107, 111, 108, 0x61, 110, 103}
+	bytes = []byte{0o107, 111, 108, 0x61, 110, 103}
 	fmt.Println(bytes)         // [71 111 108 97 110 103]
 	fmt.Println(string(bytes)) // Golang
 
