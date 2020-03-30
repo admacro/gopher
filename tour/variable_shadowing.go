@@ -22,26 +22,17 @@ import (
 	"fmt"
 )
 
-func Shadow() (s, t string) {
-	var s = "main s"
-	var t = "main t"
-	for {
-		fmt.Println(s)
-		var s = "inner s"
-		t := "inner t"
-		break
-	}
-	return s, t
-}
-
 func Bar() (n int, err error) {
 	return 123, fmt.Errorf("Invalid")
 }
 
-func Foo() (n int, err error) {
+func Foo() (n int, err error) { // declare function with result parameters n and err
 	if true {
 		n, err := Bar()
-		return // if no return here, compiler will not be able to detect the shadowing
+
+		// compiler: result parameter n not in scope at return
+		// compiler: result parameter err not in scope at return
+		return // if no return here, there would be no shadowing as n and err are not used
 	}
 	return
 }
@@ -49,13 +40,9 @@ func Foo() (n int, err error) {
 // Go compiler detects and disallows some cases of shadowing.
 // go build variable_shadowing.go
 // # command-line-arguments
-// ./variable_shadowing.go:8:6: s redeclared in this block
-// 	previous declaration at ./variable_shadowing.go:7:21
-// ./variable_shadowing.go:9:6: t redeclared in this block
-// 	previous declaration at ./variable_shadowing.go:7:21
-// ./variable_shadowing.go:33:3: n is shadowed during return
-// ./variable_shadowing.go:33:3: err is shadowed during return
+// ./variable_shadowing.go:35:3: n is shadowed during return
+// ./variable_shadowing.go:35:3: err is shadowed during return
 func main() {
-	s, t := Shadow()
+	s, t := Foo()
 	fmt.Println(s, t)
 }
