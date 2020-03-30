@@ -204,8 +204,8 @@ func main() {
 	haha[0] = []byte("you")
 	haha[1] = []byte("are")
 	haha[2] = []byte("beatiful")
-	fmt.Printf("%#c\n", haha)       // [[y o u] [a r e] [b e a t i f u l]]
-	fmt.Printf("%#c\n", haha[1][1]) // r
+	fmt.Printf("%c\n", haha)       // [[y o u] [a r e] [b e a t i f u l]]
+	fmt.Printf("%c\n", haha[1][1]) // r
 
 	// slice to string
 	// strings.Join(slice, sep string)
