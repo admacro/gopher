@@ -5,43 +5,89 @@
 // https://yourbasic.org/golang/type-alias/
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
-// type definition
-// each type has an underlying type
-// the underlying types of Go's predeclared types are the types themselves
-// the underlying type of a defined type T is the underlying type to which
-// T refers in its type declaration. This means the underlying types of all
-// types go back to Go's predeclared
+// A defined type is always different from any other type, including
+// the type it is created from
 
-// the underlying type of string is string, and struct struct
-// the underlying type of Human is struct
-type Human struct {
-	Sex string
-	Age int
+// defined type (from interface type)
+type Intr interface {
+	foo()
 }
 
-func (h *Human) Love() { fmt.Println("Human loves.") }
+// NewIntr does not inherit any methods bound to the given type Intr,
+// but the method set of NewIntr remains unchanged
+// NewIntr has the same method set as Intr
+type NewIntr Intr
 
-// the underlying type of Man is the underlying type of Human which is struct
-// type Human and type Man are distinct types
-type Man Human
-type ManPointer *string
+// defined type (from a composite type: struct)
+type Dt struct {
+	name string
+}
 
-func (m ManPointer) Think() { fmt.Println("Man thinks.") }
+func (dt *Dt) String() string { return fmt.Sprintf("%#v", dt) }
+
+// *Dt implements both Intr and NewIntr
+// as both Intr and NewIntr have method foo() in their method sets
+func (dt *Dt) foo() { fmt.Printf("%#v\n", dt) }
+
+// A defined type does not inherit any methods bound to the given type
+// NewDt is a defined type
+// NewDt and Dt are two distinct types
+// NewDt has the same fields as Dt, but the method set of NewDt is empty when it's defined
+type NewDt Dt
+
+// associate a new method with NewDt
+func (ndt *NewDt) NewString() string { return fmt.Sprintf("%#v", ndt) }
+
+// elements of composite type (struct, slice, array, map)
+// method set of elements (Dt (embedded field), NewDt (normal field)) of
+// composite type CompDt remain unchanged, and the method set of CompDt
+// contains the method set of its embedded field Dt
+type CompDt struct {
+	Dt
+	ndt NewDt
+}
 
 // type alias
-// type MaleHuman and type Man are identical types
-type MaleHuman = Man
+// Et and Dt and the same type
+type Et = Dt
+
+// Type definitions may be used to define different boolean, numeric,
+// or string types and associate methods with them
+type OutOfBound bool
+type Age int
+type Pi float64
+
+func (a Age) BirthYear() string {
+	return strconv.Itoa(2020 - int(a))
+}
 
 func main() {
-	h := Human{Sex: "male", Age: 25}
-	h.Love()
+	dt := Dt{"Defined type"}
+	fmt.Println(dt.String())
 
-	man := Man{Sex: "gentleman", Age: 25}
-	man.Think()
+	// ERROR: ndt.String undefined (type NewDt has no field or method String)
+	// ndt := NewDt{"Defined type"}
+	// fmt.Println(ndt.String())
 
-	var mh MaleHuman = man
-	fmt.Printf("#%v\n", mh)
-	mh.Think()
+	// &dt can be assigned to a variabl of either Inter or NewIntr type
+	var it Intr = &dt
+	it.foo()
+	var newIt NewIntr = &dt
+	newIt.foo()
+
+	cdt := CompDt{Dt: dt, ndt: NewDt{"Defined type"}}
+	fmt.Println(cdt.ndt.NewString()) // methods of normal element
+
+	// promoted methods of embedded field
+	cdt.foo()
+	fmt.Println(cdt.String())
+
+	// define Age as int and associate a method BirthYear with it
+	a := Age(23)
+	fmt.Println(a.BirthYear())
 }

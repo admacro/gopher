@@ -33,10 +33,11 @@ func main() {
 	bb.age = 3                                // modify/update/fill struct field
 	fmt.Printf("{%v, %v}\n", bb.name, bb.age) // {baby, 3}
 
-	// create an anonymous struct without specifying a name
+	// create an anonymous struct without first creating a new type from struct
 	st := struct {
 		a int
 		b string
 	}{1, "hello"}
-	fmt.Println(st) // {1 hello}
+	fmt.Println(st)        // {1 hello}
+	fmt.Printf("%T\n", st) // struct { a int; b string }
 }
