@@ -18,15 +18,27 @@ func main() {
 		age  int
 	}
 
+	type Empty struct{}
+
+	// zero value of struct type is not nil and a struct type cannot be initialized as nil
+	// var e Empty = nil // cannot use nil as type Empty in assignment
+	var e1 Empty				// default (zero) value is Empty{}
+	e2 := Empty{}
+	fmt.Printf("e1 == e2: %v\n", e1 == e2) // true
+
 	// create a strut
 	var p = Person{"Joker", 40} // if field names are omitted, all fields must be present in the order defined
 	// var p = Person{"Joker"}				// err: too few values in Person literal
-	var pp = Person{} // this is ok
 
 	fmt.Println(p)          // {Joker 40}
 	fmt.Printf("%+v\n", p)  // {name:Joker age:40}
 	fmt.Printf("%#v\n", p)  // main.Person{name:"Joker", age:40}
+
+	var pp Person
+	var ppp = Person{} // this is ok
+	fmt.Printf("pp == ppp: %v\n", pp == ppp) // true
 	fmt.Printf("%#v\n", pp) // main.Person{name:"", age:0}
+	fmt.Printf("%#v\n", ppp) // main.Person{name:"", age:0}
 
 	var bb = Person{name: "baby"}
 	fmt.Println(bb)                           // {baby 0} ommited field will have zero value of its type
