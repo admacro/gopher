@@ -11,20 +11,24 @@ package main
 
 import "fmt"
 
-func main() {
-	s := "function block of main()"
-	fmt.Println(s)
+// The scope of an identifier denoting a constant, type, variable, or function
+// (but not method) declared at top level (outside any function) is the package
+// block.
 
-	{ // explicit block
-		s = "explicit block inside main()"
-		fmt.Println(s)
+// identifiers in package scope: Data, ConstantData, data, dataFunc, choose, main
+type Data struct {
+	x, y int
+}
 
-		f := func() { fmt.Println("temp func inside explicit block") }
-		f()
-	}
+// method is not in package scope
+func (d *Data) DataMethod() { fmt.Println("DataMethod") }
 
-	choose(1)
-	choose(3)
+const ConstantData = "Constant Data"
+
+var data Data
+
+var dataFunc = func() {
+	fmt.Printf("%#v\n", data)
 }
 
 func choose(c int) {
@@ -47,4 +51,20 @@ func choose(c int) {
 	default:
 		fmt.Println("default")
 	}
+}
+
+func main() {
+	s := "function block of main()"
+	fmt.Println(s)
+
+	{ // explicit block
+		s = "explicit block inside main()"
+		fmt.Println(s)
+
+		f := func() { fmt.Println("temp func inside explicit block") }
+		f()
+	}
+
+	choose(1)
+	choose(3)
 }
