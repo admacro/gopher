@@ -7,12 +7,15 @@ import "fmt"
 func main() {
 	a := []int{1, 2, 3, 4, 5}
 	i := 0
-Loop:
+
+EvenOddLoop:
 	if a[i]%2 == 0 {
-		fmt.Println(a[i])
+		fmt.Printf("%d is even\n", a[i])
+	} else {
+		fmt.Printf("%d is odd\n", a[i])
 	}
 	i++
 	if i < len(a) {
-		goto Loop
+		goto EvenOddLoop
 	}
 }
