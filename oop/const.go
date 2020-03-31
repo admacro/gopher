@@ -6,12 +6,16 @@ import "fmt"
 const (
 	// Within a parenthesized const declaration list the expression list may be omitted from any but the first one.
 	// Omitting the list of expressions is equivalent to repeating the previous list.
-	constant1 = "first"
-	constant2 // this is equivalent to: constant2 = "first"
+	constant1 = 123
+	constant2 // this is equivalent to: constant2 = 123
 
 	constant3, constant4 = 111, 222
 	constant5, constant6 // this is equivalent to: constant5, constant6 = 111, 222
 )
+
+// Within a constant declaration, the predeclared identifier iota represents
+// successive untyped integer constants. Its value is the index of the respective
+// ConstSpec in that constant declaration, starting at zero.
 
 // With the iota constant generator, this mechanism permits
 // light-weight declaration of sequential values
@@ -35,15 +39,15 @@ const (
 	Wednesday        // 4
 )
 
+const (
+	empty, zero, none = iota, iota, iota // multiple uses of iota in the same ConstSpec all have the same value
+	first, one, top
+)
+
 func main() {
 	fmt.Println(constant2)
 	fmt.Println(constant5)
-
-	fmt.Println(Lundi)
-	fmt.Println(Mardi)
-	fmt.Println(Jeudi)
-	fmt.Println(Samedi)
-
-	fmt.Println(Monday)
-	fmt.Println(Wednesday)
+	fmt.Println(Lundi, Mardi, Jeudi, (Samedi))
+	fmt.Println(Monday, Wednesday)
+	fmt.Println(empty, none, one, top)
 }
