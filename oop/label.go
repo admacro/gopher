@@ -14,6 +14,16 @@ EvenOddLoop:
 	} else {
 		fmt.Printf("%d is odd\n", a[i])
 	}
+
+	// labels are not block scoped and do not conflict with identifiers that are not labels
+	const EvenOddLoop = 1
+
+	// The scope of a label is the body of the function in which it is declared
+	// and excludes the body of any nested function.
+	// func() {
+	// 	goto EvenOddLoop
+	// }()
+
 	i++
 	if i < len(a) {
 		goto EvenOddLoop

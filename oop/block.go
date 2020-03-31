@@ -1,5 +1,9 @@
 // https://golang.org/ref/spec#Blocks
-// A block is a possibly empty sequence of declarations and statements within matching brace brackets.
+// A block is a possibly empty sequence of declarations
+// and statements within matching brace brackets
+
+// No identifier may be declared twice in the same block, and
+// no identifier may be declared in both the file and package block
 
 // Explicit blocks: {}, function body
 // Implicit blocks in Go: universe > package > file > if/for/switch > switch/select clause
