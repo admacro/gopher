@@ -28,6 +28,23 @@ func main() {
 	ad := [...]int{1, 8, 9, 39, 94, 222, 45}
 	fmt.Println(ad)
 
+	// slice literal
+	sl := []int{1, 8, 9}
+	fmt.Printf("value: %#v, len: %d, cap: %d\n", sl, len(sl), cap(sl))
+
+	// literals that contain elements of pointer type
+	type Point struct{ x, y int }
+	pa := [3]*Point{{1, 3}, {}} // same as [3]*Point{&Point{1,3}, &Point{}}
+	ma := map[string]*Point{"start": {0, 0}, "end": {23, 45}}
+	fmt.Printf("value: %#v, len: %d, cap: %d\n", pa, len(pa), cap(pa))
+	fmt.Printf("value: %#v, len: %d\n", ma, len(ma))
+
+	// parsing ambiguity (No more as of 2020apr1)
+	// no need to enclose literal with parenthesis: ([]int{1, 2}[1]) or (2 == []int{1, 2}[1])
+	if 2 == []int{1, 2}[1] {
+		fmt.Println("2 == []int{1, 2}[1]")
+	}
+
 	// slice and map initialization
 	// the zero value for a slice or map type is nil
 	// a slice or map must be initialized to hold elements, which means storage
@@ -40,7 +57,7 @@ func main() {
 	var s []string
 
 	// declared but uninitialized (storage not allocated, compare with new in Java)
-	// ss points to a slice with value nil
+	// ss is a pointer points to a slice with value nil
 	ss := new([]string)
 
 	// declared and initialized (storage allocated, but still an empty slice without any elements)
