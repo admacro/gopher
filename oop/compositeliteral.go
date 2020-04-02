@@ -1,4 +1,5 @@
 // https://golang.org/ref/spec#Composite_literals
+// https://golang.org/ref/spec#Type_assertions
 package main
 
 import (
