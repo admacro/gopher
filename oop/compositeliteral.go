@@ -78,18 +78,32 @@ func main() {
 
 // for getting type from interface see
 // https://stackoverflow.com/questions/20170275/how-to-find-a-type-of-an-object-in-go
-func printInfo(ss ...interface{}) {
-	for _, s := range ss {
-		sv := reflect.ValueOf(s)
-		switch s.(type) {
+func printInfo(intrs ...interface{}) {
+	for _, intr := range intrs {
+		val := reflect.ValueOf(intr)
+		switch intr.(type) {
 		case []string:
 			{
-				sl := s.([]string)
-				fmt.Printf("value: %#v, len: %d, cap: %d\n", sv, len(sl), cap(sl))
+				// Type Assertion
+				// https://golang.org/ref/spec#Type_assertions
+				//
+				// x.(T) is called type assertion
+				// The expression asserts that the dynamic type of x is T, which means T
+				// must implement the (interface) type of x
+				// The value of the expression is the value stored in x and its type is T
+				// In other words, the type of the expression x.(T) is type T in a correct program
+				s := intr.([]string)
+				fmt.Printf("value: %#v, len: %d, cap: %d\n", val, len(s), cap(s))
 			}
 		case map[int]string:
-			// cap() does not support map
-			fmt.Printf("value: %#v, len: %d\n", sv, len(s.(map[int]string)))
+			// v, ok := x.(T)
+			// ok is true if the type assertion holds, otherwise if false
+			// the value of v is the zero value of type T
+			m, ok := intr.(map[int]string)
+			if ok {
+				// cap() does not support map
+				fmt.Printf("value: %#v, len: %d\n", val, len(m))
+			}
 		}
 	}
 }
