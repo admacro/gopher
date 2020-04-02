@@ -11,8 +11,14 @@ import "fmt"
 
 type Rt struct{ x int }
 
-func (r Rt) M(a int) int {
+func (r Rt) Mv(a int) int {
 	v := a + r.x
+	fmt.Println(v)
+	return v
+}
+
+func (r *Rt) Mp(b float64) float64 {
+	v := b + float64(r.x)
 	fmt.Println(v)
 	return v
 }
@@ -28,14 +34,24 @@ func (Rt) Mi(s string) string {
 }
 
 func main() {
+	// 1. type method values
 	rt := Rt{123}
-	rt.M(111)
+	rt.Mv(111)
 
-	// rt.M is a method value
-	methodValue := rt.M
-	methodValue(111)
+	// rt.Mv is a method value
+	mvMethodValue := rt.Mv
+	mvMethodValue(111)
 
-	// interface
+	// automatic referencing
+	mpMethodValue := rt.Mp // equivalent to: (&rt).Mp
+	mpMethodValue(3.14)
+
+	// automatic dereferencing
+	rtp := &rt
+	rtpMvMethodValue := rtp.Mv // equivalent to: (*rtp).Mv
+	rtpMvMethodValue(222)
+
+	// 2. interface method values
 	var ri Ri = &rt
 	ri.Mi("bonjour")
 
