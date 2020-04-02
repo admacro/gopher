@@ -98,12 +98,23 @@ func main() {
 	// its underlying array. Other slices that share the same underlying array
 	// will see those changes.
 
-	// slice of slice
+	// https://golang.org/ref/spec#Slice_expressions
+	// slice of slice: slice expression
+	// a[low : high]
+	//     length = high - low
+	//     capacity = high
 	// s[a:b] returns a slice of s from index a (included) to b (excluded)
 	// s[a:] is same as s[a:len(s)]
 	// s[:b] is same as s[0:b]
 	var leaders = followers[4:6]
 	print_slice_info(leaders, "leaders") // length: 2, capacity: 6
+
+	// full slice expression
+	// a[low : high : max]
+	//     length = high - low
+	//     capacity = max - low
+	var leaderCandidates = followers[4:6:8]
+	print_slice_info(leaderCandidates, "leader candidates") // length: 2, capacity: 4
 
 	// new slice share the same data with original slice from which it is sliced
 	leaders[0] = "vip leader"
