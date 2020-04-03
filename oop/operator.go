@@ -23,4 +23,14 @@ func main() {
 
 	// Binary operators of the same precedence associate from left to right.
 	fmt.Println("Results:", 1<<2>>2)
+
+	// division /, modulo %, right shift >>, and bitwise AND &
+	// if a dividend is a non-negative, and the divisor is a
+	// constant power of 2, then
+	//     division can be replaced by a right shift operation
+	//     remainder can be computed by a bitwise AND operation
+	fmt.Println("Results:", 11/4)
+	fmt.Println("Results:", 11>>2) // 2=4/2 (shift bits count = dividing-divisor / 2)
+	fmt.Println("Results:", 11%4)
+	fmt.Println("Results:", 11&3) // 3=4-1 (AND operand = dividing-divisor - 1)
 }
