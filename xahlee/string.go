@@ -6,8 +6,14 @@ func main() {
 	// interpreted string literal
 	// rules for literal string in golang is same as in Java
 	var heart = "♥" // ♥(U+2665): E2 99 A5
+
+	// use + or += for string concatenation
 	var msg = heart + " is a heart"
 	fmt.Println(msg)
+	var twoHearts = heart
+	twoHearts += heart
+	fmt.Println(twoHearts)
+
 	fmt.Println("\"use backslash \\ for escaping\"\nnew line after quote")
 
 	// raw string literal
