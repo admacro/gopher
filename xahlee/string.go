@@ -8,6 +8,7 @@ func main() {
 	var heart = "♥" // ♥(U+2665): E2 99 A5
 
 	// use + or += for string concatenation
+	// concatenation creates a new string
 	var msg = heart + " is a heart"
 	fmt.Println(msg)
 	var twoHearts = heart
