@@ -20,11 +20,11 @@ func Point3D(x, y, z float64) (float64, float64, float64) {
 
 func Cc(x, y float64, zz ...float64) float64 {
 	zzLen := len(zz)
-	if zzLen == 1 {
+	if zzLen == 0 {
+		return math.Sqrt(x*x + y*y)
+	} else if zzLen == 1 {
 		z := zz[0]
 		return math.Sqrt(x*x + y*y + z*z)
-	} else if zzLen == 0 {
-		return math.Sqrt(x*x + y*y)
 	}
 	return 0
 }
