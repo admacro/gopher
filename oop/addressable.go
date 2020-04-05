@@ -10,30 +10,36 @@ func main() {
 	// variable
 	var s = "hello"
 	sp := &s
-	fmt.Println(sp)
+	fmt.Printf("%T: %v\n", sp, sp)
 
 	// pointer indirection
 	// *sp is a point indirection
-	fmt.Println(&(*sp)) // same as above
+	fmt.Printf("%T: %v\n", &(*sp), &(*sp)) // same as above
 
 	// slice indexing operation
 	slice := []string{"bonjour", "madame"}
-	fmt.Println(&slice[1])
-	fmt.Println(&(slice[1])) // same as above
+	fmt.Printf("%T: %v\n", &slice[1], &slice[1])
+	fmt.Printf("%T: %v\n", &(slice[1]), &(slice[1])) // same as above
 	// fmt.Println((&slice)[1]) // invalid operation: (&slice)[1] (type *[]string does not support indexing)
 
 	// field selector of an addressable struct operand
 	type St struct{ s string }
 	st := St{"merci"}
-	fmt.Println(&st.s)
-	fmt.Println(&(st.s)) // same as above
-	fmt.Println((&st).s) // fields of a struct s can be accessecd by its pointer *s
+	fmt.Printf("%T: %v\n", &st, &st)
+	fmt.Printf("%T: %v\n", &st.s, &st.s)
+	fmt.Printf("%T: %v\n", &(st.s), &(st.s)) // same as above
+	fmt.Printf("%T: %v\n", (&st).s, (&st).s) // fields of a struct s can be accessecd by its pointer *s
 
 	// array indexing operation of an addressable array
-	a := [...]St{st, st, st}
-	fmt.Printf("%T: %v\n", &a[1], &a[1]) // *main.St
-	fmt.Println(&(a[1]))                 // same as above
+	a := [...]int{1, 2, 3}
+	fmt.Printf("%T: %v\n", &a[1], &a[1])
+	fmt.Printf("%T: %v\n", &(a[1]), &(a[1])) // same as above
 
 	// composite literal
-
+	cl := &St{"struct literal"}
+	fmt.Printf("%T: %v\n", cl, cl)
+	m := &map[int]string{1: "map literal"}
+	fmt.Printf("%T: %v\n", m, m)
+	fmt.Printf("%T: %v\n", (*m)[1], (*m)[1])
+	// fmt.Printf("%T: %v\n", &(*m)[1], &((*m)[1])) // cannot take the address of (*m)[1]
 }
