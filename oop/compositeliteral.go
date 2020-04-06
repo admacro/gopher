@@ -84,18 +84,16 @@ func printInfo(intrs ...interface{}) {
 		val := reflect.ValueOf(intr)
 		switch intr.(type) {
 		case []string:
-			{
-				// Type Assertion
-				// https://golang.org/ref/spec#Type_assertions
-				//
-				// x.(T) is called type assertion
-				// The expression asserts that the dynamic type of x is T, which means T
-				// must implement the (interface) type of x
-				// The value of the expression is the value stored in x and its type is T
-				// In other words, the type of the expression x.(T) is type T in a correct program
-				s := intr.([]string)
-				fmt.Printf("value: %#v, len: %d, cap: %d\n", val, len(s), cap(s))
-			}
+			// Type Assertion
+			// https://golang.org/ref/spec#Type_assertions
+			//
+			// x.(T) is called type assertion
+			// The expression asserts that the dynamic type of x is T, which means T
+			// must implement the (interface) type of x
+			// The value of the expression is the value stored in x and its type is T
+			// In other words, the type of the expression x.(T) is type T in a correct program
+			s := intr.([]string)
+			fmt.Printf("value: %#v, len: %d, cap: %d\n", val, len(s), cap(s))
 		case map[int]string:
 			// v, ok := x.(T)
 			// ok is true if the type assertion holds, otherwise if false

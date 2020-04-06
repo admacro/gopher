@@ -34,18 +34,17 @@ var dataFunc = func() {
 func choose(c int) {
 	switch c { // switch block
 	case 1:
-		{ // case clause block
-			func() { // function block
-				fmt.Printf("temp func in case-clause block, case: %d\n", c)
-				// more blocks can be added here
-				// for instance, another explicit block or if/for/switch block
-				{
-					fmt.Printf("explicit block inside temp func in case-clause block, case: %d\n", c)
-				}
-			}()
-			fmt.Println("1")
-			fmt.Println("11")
-		}
+		// case clause block
+		func() { // function block
+			fmt.Printf("temp func in case-clause block, case: %d\n", c)
+			// more blocks can be added here
+			// for instance, another explicit block or if/for/switch block
+			{
+				fmt.Printf("explicit block inside temp func in case-clause block, case: %d\n", c)
+			}
+		}()
+		fmt.Println("1")
+		fmt.Println("11")
 	case 2:
 		fmt.Println("2")
 	default:

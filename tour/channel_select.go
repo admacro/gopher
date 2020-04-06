@@ -3,7 +3,7 @@ package main
 
 import "fmt"
 
-// select choose one of the cases to run
+// select chooses one of the cases to run
 // the cases are channel communication operations: sends and receives
 // only operations that can proceed are valid candidates
 // the selection is pseudo-random if more than one cases/operations can proceed
