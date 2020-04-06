@@ -26,9 +26,13 @@ func main() {
 	// receive values from the channel repeatedly until it is closed.
 	// note the syntax here: there is no <- operator, i is same as <-c
 	// in this sense, channels act as first-in-first-out queues.
+
+	// iteration over channel permits only one variable, thus it's illegal to write
+	//     for i, ok := range c {...}
 	for i := range c {
-		fmt.Println(i)
+		fmt.Printf("%v ", i) // the last value returned is 0
 	}
+	fmt.Println()
 
 	// panic: send on closed channel
 	// go fibonacci(cap(c), c)
@@ -42,9 +46,9 @@ func main() {
 	for {
 		v, ok := <-ch
 		if ok {
-			fmt.Println(v)
+			fmt.Printf("%v ", v)
 		} else {
-			fmt.Printf("Channel %#v is closed.\n", ch)
+			fmt.Printf("\nChannel %#v is closed. (Value received from channel: %v)\n", ch, v)
 			break
 		}
 	}
