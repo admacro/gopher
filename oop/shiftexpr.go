@@ -6,6 +6,11 @@
 // operand of a non-constant shift expression is an untyped constant, it is
 // first implicitly converted to the type it would assume if the shift expression
 // were replaced by its left operand alone.
+
+// https://golang.org/ref/spec#Constant_expressions
+// If the left operand of a constant shift expression is an untyped constant,
+// the result is an integer constant; otherwise it is a constant of the same
+// type as the left operand, which must be of integer type.
 package main
 
 import (

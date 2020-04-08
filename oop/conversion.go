@@ -8,15 +8,25 @@ func main() {
 	i, j := 71, 0x6F
 	fmt.Printf("string(%v) = %q\n", i, string(i))
 	fmt.Printf("string(%x) = %q\n", j, string(j))
+	// Values outside the range of valid Unicode code
+	// points are converted to "\uFFFD"
+	fmt.Printf("string(%v) = %+q\n", -1, string(-1))
 
 	// rune to integer, string
 	r, rr := 'G', 'o'
 	fmt.Printf("int(%q) = %v, string(%q) = %q\n", r, int(r), r, string(r))
 	fmt.Printf("int(%q) = %v, string(%q) = %q\n", rr, int(rr), rr, string(rr))
 
-	// []byte/[]rune to string
-	goBytes := []byte{'G', 0x6f} // equivalent to: []rune{'G', 0x6f}
+	// []byte, []rune to string
+	goBytes := []byte{'G', 0x6f}
 	fmt.Printf("string([]byte{'G', 0x6f}) = %q\n", string(goBytes))
+	goRunes := []rune{71, 'o'}
+	fmt.Printf("string([]rune{71, 'o'}) = %q\n", string(goRunes))
+
+	// string to []byte, []rune
+	goStr := "Go"
+	fmt.Printf("[]byte(%q) = %#v\n", goStr, []byte(goStr))
+	fmt.Printf("[]rune(%q) = %#v\n", goStr, []rune(goStr))
 
 	// string (with exactly one character) to integer
 	ss, sss := "G", "o"
@@ -82,4 +92,9 @@ func main() {
 	var rtrnFunc = (func(int) string)(funcRtrnVal)
 	fmt.Println(rtrnFunc(456))
 
+	// floating-point to integer
+	// fraction is discarded (truncation towards zero)
+	pi := 3.1415926
+	e := 2.71828
+	fmt.Println(int(pi), int(e))
 }

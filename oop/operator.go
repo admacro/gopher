@@ -7,7 +7,7 @@ import "fmt"
 func main() {
 	// operator precedence
 	// unary operators have the highest precedence
-	// the unary operator bitwise complement ^ has precedence over binary operator XOR ^
+	// the unary bitwise complement operator ^ has precedence over binary operator XOR ^
 	// ^x is m ^ x  with m = "all bits set to 1" for unsigned x
 	//              and m = -1 for signed x
 
