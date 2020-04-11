@@ -30,7 +30,7 @@ func main() {
 	// iteration over channel permits only one variable, thus it's illegal to write
 	//     for i, ok := range c {...}
 	for i := range c {
-		fmt.Printf("%v ", i) // the last value returned is 0
+		fmt.Printf("%v ", i)
 	}
 	fmt.Println()
 

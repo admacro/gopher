@@ -20,6 +20,12 @@ func main() {
 		fmt.Println(i)
 	}
 
+	// this is useful for generating ordered indices
+	var ss [10]uint8
+	for i, _ := range ss {
+		fmt.Println(i)
+	}
+
 	// For a string value, the "range" clause iterates over the Unicode code
 	// points in the string starting at byte index 0. On successive iterations,
 	// the index value will be the index of the first byte of successive UTF-8-encoded
@@ -53,5 +59,22 @@ func main() {
 			m[7] = 7 // m[7] may be produced or skipped
 		}
 		fmt.Printf("%v: %v\n", k, v)
+	}
+
+	// for range over channel
+	// see ../tour/channel_close.go for another example
+	msgQueue := make(chan string)
+	go func() {
+		msgQueue <- "Hello, my name is Jack."
+		msgQueue <- "How are you doing?"
+		msgQueue <- "What's your name?"
+		close(msgQueue)
+	}()
+
+	// no need to check whether channel has been closed or not, and
+	// it's not allowed. Only one iteration variable is allowed.
+	// illegal: for msg, closed := range msgQueue {}
+	for msg := range msgQueue {
+		fmt.Println(msg)
 	}
 }
