@@ -1,3 +1,4 @@
+// https://golang.org/ref/spec#Defer_statements
 package main
 
 import "fmt"
@@ -6,7 +7,7 @@ func cleanup(s string) {
 	fmt.Printf("cleaning up [%v]...\n", s)
 }
 
-func main() {
+func deferStacked() {
 	fmt.Println("main program starts...")
 
 	fmt.Println("some initial work")
@@ -18,6 +19,28 @@ func main() {
 	}
 
 	fmt.Println("main program exists...")
+}
+
+// deferred functions are executed after any result parameters are set
+// by that return statement but before the function returns to its caller.
+
+// execution order
+// 1. func literal value and its parameter is evaluated and saved
+// 2. set result to 111
+// 3. execute func literal with its parameter (by which result is changed)
+// 4. the surrounding function deferFuncliteral returns (with result set to 234)
+func deferFuncLiteral() (result int) {
+	defer func(i int) {
+		// result is accessed after it was set to 111 by the return statement
+		result += i
+	}(123)
+	// return     // this returns 123
+	return 111 // this returns 234
+}
+
+func main() {
+	deferStacked()
+	fmt.Println(deferFuncLiteral())
 }
 
 // defer func_name(args)
