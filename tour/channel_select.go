@@ -11,6 +11,17 @@ import "fmt"
 // if no case can proceed and there is no default case, it blocks until one of the cases can proceed
 // if in no chance can there be a case that can proceed, it blocks forever
 
+// execution of a select statement
+// 1. the right-hand-side of <- of all cases, that is: x -> quit
+// 2. see if any of x, quit (or more) channels can proceed (ready to communicate)
+// 3. select the case to execute
+//    a. if there is only one ready, select that one
+//    b. if there are more than one ready, performe a uniform pseudo-random selection
+//    c. if there is none ready and there is default case, select the default case
+//    d. if there is no default case, the select statement blocks until at least one of the communications can proceed
+// 4. execute the communication that's selected
+//    a. if the selected case is not a defaut case, the left-hand-side of <- is evaluated
+// 5. the statement list of the selected case is executed
 func fibonacci(c, quit chan int) {
 	x, y := 0, 1
 	for {
