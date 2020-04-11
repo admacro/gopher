@@ -1,9 +1,25 @@
 // https://golang.org/ref/spec#For_statements
+// see ../conc/range_var.go for an example of iteration variable issue
+// when they are used in goroutine inside the loop
 package main
 
 import "fmt"
 
 func main() {
+	// For an array, pointer to array, or slice value aps, if at most one
+	// iteration variable is present, the range loop produces iteration values
+	// from 0 up to len(a)-1 and does not index into the array or slice itself.
+	var aps [5]int          // aps can be array, pointer to array, or slice
+	for i, _ := range aps { // no non-blank identifier for receiving value
+		// aps is never evaluated as there is no need for the elements of aps
+		// len(aps) is constant, thus this loop is equivalent to:
+		//     for i := 0; i < 5; i++ {...}
+		//  or for i := 0; i <= 4; i++ {...}
+
+		// i ranges from 0 to 4
+		fmt.Println(i)
+	}
+
 	// For a string value, the "range" clause iterates over the Unicode code
 	// points in the string starting at byte index 0. On successive iterations,
 	// the index value will be the index of the first byte of successive UTF-8-encoded
