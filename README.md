@@ -30,6 +30,7 @@ structure. [More on GOPATH][gopath]
 - [Object-oriented programming without inheritance][oop]
 
 ### Other references
+- [The Go Blog][goblog]
 - [The Go Programming Language (book)][gopl]
 
 [installer]: https://www.golang.org/dl
@@ -42,3 +43,4 @@ structure. [More on GOPATH][gopath]
 [gowiki]: https://github.com/admacro/gowiki
 [oop]: https://yourbasic.org/golang/inheritance-object-oriented/
 [gopl]: https://www.gopl.io
+[goblog]: https://blog.golang.org/index
