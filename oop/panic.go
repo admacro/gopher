@@ -5,6 +5,9 @@ package main
 
 import "fmt"
 
+// When the function F calls panic, execution of F stops, any
+// deferred functions in F are executed normally
+// same with deferred functions in fCaller and main
 func F() {
 	defer func() { fmt.Println("F() defered function") }()
 	fmt.Println("F() statements before panic")
