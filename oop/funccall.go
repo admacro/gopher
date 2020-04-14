@@ -37,8 +37,9 @@ func main() {
 	c := C(coordinate(a, b))
 	fmt.Printf("%v*%v + %v*%v = %v*%v\n", a, a, b, b, c, c)
 
-	// only two result values of coordinate(a, b) are assgined to
-	// the first two parameters of function Cc in order
+	// the two return values of coordinate(a, b) are assgined to
+	// the first two parameters of function Cc in order, leaving
+	// the third zz blank as zz is an optionl parameter
 	d := Cc(coordinate(a, b))
 	fmt.Printf("%v*%v + %v*%v = %v*%v\n", a, a, b, b, d, d)
 

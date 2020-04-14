@@ -4,6 +4,7 @@
 // in a surrounding function. Those variables are then shared between the
 // surrounding function and the function literal, and they survive as long
 // as they are accessible.
+// see ../xahlee/closure.go for more on closure
 package main
 
 import "fmt"
