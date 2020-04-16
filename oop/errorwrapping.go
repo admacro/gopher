@@ -9,7 +9,7 @@ import (
 
 func main() {
 	// create wrapped errors
-	// apply %w verb to the underlying error
+	// to wrap an error, apply %w verb to the underlying error
 	uerr := errors.New("underlying error")
 	err := fmt.Errorf("this error wraps [%w]", uerr)
 	if err != nil {
