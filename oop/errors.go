@@ -30,8 +30,10 @@ func main() {
 	}
 
 	// custom error with more useful information
-	err = InvalidZipcodeError{"12345a"}
-	if err != nil {
-		fmt.Println(err)
+	// Invalidzipcodeerror implements error interface
+	// thus a value of Invalidzipcodeerror can be assigned to a variable of error
+	var e error = InvalidZipcodeError{"12345a"}
+	if e != nil {
+		fmt.Println(e)
 	}
 }
