@@ -24,7 +24,7 @@ func (comp *Computer) Format(f fmt.State, c rune) {
 	out := strings.Join([]string{startLine, archLine, cpuLine, osLine, endLine}, "\n")
 	n, err := f.Write([]byte(out))
 	if n == 0 && err != nil {
-		panic(fmt.Errorf("error formatting %#v", comp))
+		panic(fmt.Errorf("error formatting %s", out))
 	}
 }
 
