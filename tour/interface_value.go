@@ -1,3 +1,5 @@
+// interfaces
+// https://tour.golang.org/methods/9
 package main
 
 import (
@@ -38,7 +40,7 @@ func main() {
 	// on its underlying type.
 
 	var i I
-	describe(i) // (<nil> <nil>)
+	describe(i) // (<nil> <nil>) value is nil, type is nil
 
 	// interface value i holds a value of &{hello} of type *main.T
 	var t = T{"hello"}
@@ -76,5 +78,9 @@ func main() {
 }
 
 func describe(i interface{}) {
-	fmt.Printf("(%v %T)\n", i, i)
+	if i == nil {
+		fmt.Printf("nil (V: %v, T: %T)\n", i, i)
+	} else {
+		fmt.Printf("(V: %v, T: %T)\n", i, i)
+	}
 }
