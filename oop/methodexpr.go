@@ -32,24 +32,29 @@ func (t T) Minter(s string) string {
 
 func main() {
 	t := T{123}
-	fmt.Println(t.Mv(111), t.Mp(3.14))
+	t.Mv(111)
+	t.Mp(3.14)
 
 	// T.Mv is a method expression
 	// T.Mv yields a function equivalent to Mv but with
 	// an explicit receiver as its first argument
-	// the yielded function has thes signature: func(t T, a int) int
+	// the yielded function has the signature: func(t T, a int) int
 	// the function may be called normally with an explicit receiver
 
 	// the following five are equivalent
-	t.Mv(222)      // 1
-	T.Mv(t, 222)   // 2
-	(T).Mv(t, 222) // 3
+	t.Mv(222) // 1
 
-	fv := T.Mv // 4
-	fv(t, 222)
+	ft := t.Mv
+	ft(222) // 2
 
-	fp := (T).Mv // 5
-	fp(t, 222)
+	T.Mv(t, 222)   // 3
+	(T).Mv(t, 222) // 4
+
+	fT := T.Mv // 5
+	fT(t, 222)
+
+	fT = (T).Mv // 6
+	fT(t, 222)
 
 	// same with method with a pointer receiver
 	// (*T).Mp yields: func(t *T, b float64) float64
@@ -67,8 +72,11 @@ func main() {
 	var intr Intr = &t
 
 	// the following are equivalent
-	intr.Minter("hello")       // 1
-	Intr.Minter(intr, "hello") // 2
-	im := Intr.Minter          // 3
-	im(intr, "hello")
+	intr.Minter("hello") // 1
+	im := intr.Minter    // 2
+	im("hello")
+
+	Intr.Minter(intr, "hello") // 3
+	Im := Intr.Minter          // 4
+	Im(intr, "hello")
 }
