@@ -46,7 +46,6 @@ func G() {
 		i++
 	}()
 
-
 	fmt.Println("G() function")
 
 	// something bad happens
