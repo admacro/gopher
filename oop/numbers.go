@@ -36,7 +36,23 @@ func main() {
 		w = 0X.8p-0
 		x = 0X_1FFFP-16
 		y = 0x15e - 2 // integer subtraction
+
+		aa = 0i
+		bb = 0123i  // == 123i for backward-compatibility
+		cc = 0o123i // == 0o123 * 1i == 83i
+		dd = 0xabci // == 0xabc * 1i == 2748i
+		ee = 0.i
+		ff = 2.71828i
+		gg = 1.e+0i
+		hh = 6.67428e-11i
+		ii = 1E6i
+		jj = .25i
+		kk = .12345E+5i
+		ll = 0x1p-2i // == 0x1p-2 * 1i == 0.25i
 	)
 
-	fmt.Println(a, b, c, d, e, f, g, h, h1, i, i1, j, j1, k, l, m, m1, n, o, p, q, r, s, t, u, v, w, x, y)
+	fmt.Println(a, b, c, d, e, f, g, h, h1)
+	fmt.Println(i, i1, j, j1, k, l, m, m1)
+	fmt.Println(n, o, p, q, r, s, t, u, v, w, x, y)
+	fmt.Println(aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, kk, ll)
 }
