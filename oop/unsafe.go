@@ -1,4 +1,13 @@
 // https://golang.org/ref/spec#Package_unsafe
+//
+// package unsafe
+// type ArbitraryType int  // shorthand for an arbitrary Go type; it is not a real type
+// type Pointer *ArbitraryType
+// func Alignof(variable ArbitraryType) uintptr
+// func Offsetof(selector ArbitraryType) uintptr
+// func Sizeof(variable ArbitraryType) uintptr
+//
+// doc: https://pkg.go.dev/unsafe
 package main
 
 import (
