@@ -7,7 +7,7 @@
 // func Alignof(variable ArbitraryType) uintptr
 // func Offsetof(selector ArbitraryType) uintptr
 // func Sizeof(variable ArbitraryType) uintptr
-// 
+//
 // Pointer and uintptr
 // Pointer represents a pointer to an arbitrary type. There are four special
 // operations available for type Pointer that are not available for other
@@ -24,11 +24,19 @@ import (
 	"fmt"
 	"strconv"
 	"unsafe"
-	"math"
 )
 
 func main() {
-	fmt.Printf("%b\n", math.Float64bits(3.14))
+	// *T1 => Pointer => *T2
+	// this conversion allows reinterpreting data of one type as data of another type
+	var i16 int16 = 9999
+	iPtr := unsafe.Pointer(&i16)
+	var i32Ptr *int32 = (*int32)(iPtr)
+	var i32 int32 = *i32Ptr
+	fmt.Printf("unsafe.Sizeof(%T) = %v\n", i16, unsafe.Sizeof(i16))
+	fmt.Printf("unsafe.Sizeof(%T) = %v\n", i32, unsafe.Sizeof(i32))
+	fmt.Printf("%T<%v> => %T<%v> => %T<%v>\n", i16, i16, iPtr, iPtr, i32, i32)
+
 	// pointer => Pointer
 	x, y, z := 1, 3.14, "go"
 	xp, yp, zp := &x, &y, &z
@@ -49,7 +57,8 @@ func main() {
 	zpUint := uintptr(zpInt)
 	fmt.Printf("uintptr(%T(%v)) = %d\n", zpInt, zpInt, zpUint)
 
-	// invalid usage pattern of Pointer: uintptr => Pointer
+	// uintptr => Pointer (invalid usage pattern of Pointer)
+	// Conversion of a uintptr back to Pointer is not valid in general.
 	//
 	// flycheck error: unsafeptr: possible misuse of unsafe.Pointer
 	//
@@ -67,4 +76,24 @@ func main() {
 	// Pointer => uintptr
 	zPtrUint := uintptr(zPtr)
 	fmt.Printf("uintptr(unsafe.Pointer(%T<%v>)) = %v (%d)\n", zp, zp, zPtrUint, zPtrUint)
+
+	// Pointer => uintptr => Pointer (with arithmetic)
+	// struct
+	type St struct {
+		s string
+		t float32
+	}
+	st := St{"pi", 3.14}
+	piPtr := unsafe.Pointer(&st)
+	piPtrS := unsafe.Pointer(uintptr(piPtr) + unsafe.Offsetof(st.s)) // equivalent to unsafe.Pointer(&st.s)
+	piPtrT := unsafe.Pointer(uintptr(piPtr) + unsafe.Offsetof(st.t)) // equivalent to unsafe.Pointer(&st.t)
+	fmt.Printf("unsafe.Pointer(uintptr(piPtr) + unsafe.Offsetof(st.s)) = %v (%q)\n", piPtrS, *(*string)(piPtrS))
+	fmt.Printf("unsafe.Pointer(uintptr(piPtr) + unsafe.Offsetof(st.t)) = %v (%v)\n", piPtrT, *(*float32)(piPtrT))
+	// array
+	a := [3]int{1, 2, 3}
+	aPtr := unsafe.Pointer(&a)
+	for i := range a {
+		v := unsafe.Pointer(uintptr(aPtr) + uintptr(i)*unsafe.Sizeof(&a[0]))
+		fmt.Printf("a[%v] = %v\n", i, *(*int)(v))
+	}
 }
