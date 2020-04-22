@@ -67,9 +67,10 @@ func main() {
 	// code is valid.
 	// see more at https://pkg.go.dev/unsafe?tab=doc#Pointer
 	//
-	// james@~$ go vet /Users/james/prog/allez/oop/unsafe.go
+	// james@~$ go vet /Users/james/prog/allez/oop/unsafepointer.go
 	// # command-line-arguments
-	// prog/allez/oop/unsafe.go:106:15: possible misuse of unsafe.Pointer
+	// prog/allez/oop/unsafepointer.go:74:15: possible misuse of unsafe.Pointer
+	// prog/allez/oop/unsafepointer.go:106:12: possible misuse of unsafe.Pointer
 	zpUintPtr := unsafe.Pointer(zpUint)
 	fmt.Printf("unsafe.Pointer(%T(%v)) = %d [%v]\n", zpUint, zpUint, zpUintPtr, *(*string)(zpUintPtr))
 
@@ -86,8 +87,23 @@ func main() {
 	st := St{"pi", 3.14}
 	piPtr := unsafe.Pointer(&st)
 	piPtrS := unsafe.Pointer(uintptr(piPtr) + unsafe.Offsetof(st.s)) // equivalent to unsafe.Pointer(&st.s)
-	piPtrT := unsafe.Pointer(uintptr(piPtr) + unsafe.Offsetof(st.t)) // equivalent to unsafe.Pointer(&st.t)
 	fmt.Printf("unsafe.Pointer(uintptr(piPtr) + unsafe.Offsetof(st.s)) = %v (%q)\n", piPtrS, *(*string)(piPtrS))
+
+	// according to the pkg doc, this ought to be an error;
+	// but it is showing as a warning here, with the same
+	// error message as above (line#73):
+	//     unsafeptr: possible misuse of unsafe.Pointer
+	//
+	// error message in pkg doc:
+	//     INVALID: uintptr cannot be stored in variable
+	//     before conversion back to Pointer.
+	//
+	// james@~$ go vet /Users/james/prog/allez/oop/unsafepointer.go
+	// # command-line-arguments
+	// prog/allez/oop/unsafepointer.go:74:15: possible misuse of unsafe.Pointer
+	// prog/allez/oop/unsafepointer.go:106:12: possible misuse of unsafe.Pointer
+	piPtrUint := uintptr(piPtr)
+	piPtrT := unsafe.Pointer(piPtrUint + unsafe.Offsetof(st.t)) // equivalent to unsafe.Pointer(&st.t)
 	fmt.Printf("unsafe.Pointer(uintptr(piPtr) + unsafe.Offsetof(st.t)) = %v (%v)\n", piPtrT, *(*float32)(piPtrT))
 	// array
 	a := [3]int{1, 2, 3}
