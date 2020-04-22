@@ -1,4 +1,6 @@
 // https://golang.org/ref/spec#Integer_literals
+// https://golang.org/ref/spec#Floating-point_literals
+// https://golang.org/ref/spec#Imaginary_literals
 package main
 
 import "fmt"
