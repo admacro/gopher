@@ -112,4 +112,10 @@ func main() {
 		v := unsafe.Pointer(uintptr(aPtr) + uintptr(i)*unsafe.Sizeof(&a[0]))
 		fmt.Printf("a[%v] = %v\n", i, *(*int)(v))
 	}
+
+	// see pkg doc of unsafe for other conversions
+	// https://pkg.go.dev/unsafe
+	// (4) Conversion of a Pointer to a uintptr when calling syscall.Syscall.
+	// (5) Conversion of the result of reflect.Value.Pointer or reflect.Value.UnsafeAddr from uintptr to Pointer.
+	// (6) Conversion of a reflect.SliceHeader or reflect.StringHeader Data field to or from Pointer.
 }
