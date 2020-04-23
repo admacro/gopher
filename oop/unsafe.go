@@ -12,7 +12,6 @@ package main
 
 import (
 	"fmt"
-	"reflect"
 	"unsafe"
 )
 
@@ -62,38 +61,9 @@ func main() {
 	fmt.Printf("unsafe.Alignof(%T<%q>) = %d\n", str0, str0, unsafe.Alignof(str0)) // 8
 	fmt.Printf("unsafe.Alignof(%T<%q>) = %d\n", str1, str1, unsafe.Alignof(str1)) // 8 (same as str0)
 
-	// alignment of struct
-	// For a variable x of struct type: unsafe.Alignof(x) is the largest of
-	// all the values unsafe.Alignof(x.f) for each field f of x, but at least 1
-	st := St{1, true, 2.3, "golang", 'c'}
-	fmt.Printf("Struct %#v\n", st)
-	fmt.Printf("unsafe.Alignof(%T<%#v>) = %d\n", st, st, unsafe.Alignof(st))
-
-	// using reflect to iterate struct fields
-	// see more reflect at https://pkg.go.dev/reflect
-	stVal := reflect.ValueOf(st)
-	for i := 0; i < stVal.NumField(); i++ {
-		switch fVal := stVal.Field(i); fVal.Kind() {
-		case reflect.Int:
-			val := fVal.Int()                                                           // val's type is int64
-			fmt.Printf("unsafe.Alignof(%T<%#v>) = %d\n", val, val, unsafe.Alignof(val)) // 8
-		case reflect.Float32:
-			val := fVal.Float()                                                         // val's type is float64
-			fmt.Printf("unsafe.Alignof(%T<%#v>) = %d\n", val, val, unsafe.Alignof(val)) // 8
-		case reflect.Bool:
-			val := fVal.Bool()
-			fmt.Printf("unsafe.Alignof(%T<%#v>) = %d\n", val, val, unsafe.Alignof(val)) // 1
-		case reflect.String:
-			val := fVal.String()
-			fmt.Printf("unsafe.Alignof(%T<%#v>) = %d\n", val, val, unsafe.Alignof(val)) // 8
-		case reflect.Int32:
-			val := fVal.Int()                                                           // val's type is int64
-			fmt.Printf("unsafe.Alignof(%T<%#v>) = %d\n", val, val, unsafe.Alignof(val)) // 8
-		}
-	}
-
 	// Offsetof returns the number of bytes between the
 	// start of the struct and the start of the field
+	st := St{1, true, 2.3, "golang", 'c'}
 	fmt.Printf("Struct %#v\n", st)
 	fmt.Printf("unsafe.Offsetof(%T<%q>) = %d\n", st.i, st.i, unsafe.Offsetof(st.i)) // 0 (i is the first field, thus 0)
 	fmt.Printf("unsafe.Offsetof(%T<%v>) = %d\n", st.b, st.b, unsafe.Offsetof(st.b)) // 8
