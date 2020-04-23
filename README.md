@@ -19,7 +19,6 @@ code. If not set, `GOPATH` defaults to `~/go`. To see the value of
 structure. [More on GOPATH][gopath]
 
 ### WIP
-- [The Go Programming Language Specification][spec]
 - [Effective Go][effective]
 
 ### Done
@@ -28,6 +27,7 @@ structure. [More on GOPATH][gopath]
 - [Go Concurrency Patterns (slides)][patterns]
 - [Writing web application in Go][gowiki]
 - [Object-oriented programming without inheritance][oop]
+- [The Go Programming Language Specification][spec]
 
 ### Other references
 - [The Go Blog][goblog]
