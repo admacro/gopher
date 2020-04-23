@@ -18,6 +18,11 @@
 // - A Pointer can be converted to a uintptr.
 // Pointer therefore allows a program to defeat the type system and read
 // and write arbitrary memory. It should be used with extreme care.
+// The effect of converting between Pointer and uintptr is implementation-defined.
+//
+// A Pointer is a pointer type but a Pointer value may not be dereferenced.
+// To know the value a Pointer p points to, p must be converted back to type
+// *T which can then be dereferenced to get the value of type T: v := *(*T)(p)
 package main
 
 import (
