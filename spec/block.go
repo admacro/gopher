@@ -9,7 +9,10 @@
 // Implicit blocks in Go: universe > package > file > if/for/switch > switch/select clause
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 // The scope of an identifier denoting a constant, type, variable, or function
 // (but not method) declared at top level (outside any function) is the package
@@ -29,6 +32,23 @@ var data Data
 
 var dataFunc = func() {
 	fmt.Printf("%#v\n", data)
+}
+
+// https://golang.org/doc/effective_go.html#redeclaration
+// It's worth noting here that in Go the scope of function parameters
+// and return values is the same as the function body, even though they appear
+// lexically outside the braces that enclose the body.
+func parseDataStr(args []string) (data Data, err error) {
+	x, err := strconv.ParseInt(args[0], 10, 64)
+	if err != nil {
+		return data, err
+	}
+	y, err := strconv.ParseInt(args[1], 10, 64)
+	if err != nil {
+		return // same as return data, err
+	}
+	data = Data{x: int(x), y: int(y)}
+	return // same as return data, err
 }
 
 func choose(c int) {
@@ -66,4 +86,7 @@ func main() {
 
 	choose(1)
 	choose(3)
+
+	fmt.Println(parseDataStr([]string{"1.2", "3"}))
+	fmt.Println(parseDataStr([]string{"3", "4"}))
 }
