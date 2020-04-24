@@ -36,7 +36,13 @@ func main() {
 	// in the string.
 	s := "Go语言"
 	for i, r := range s {
-		fmt.Printf("%d %v %c\n", i, byte(r), r)
+		fmt.Printf("%#U %d %v %c\n", r, i, byte(r), r)
+	}
+	s = "编程\x99语言"
+	for i, r := range s {
+		// \x99 is an illegal unicode encoding, it will be replaced with U+FFFD
+		// U+FFFD '�' 6 253 �
+		fmt.Printf("%#U %d %v %c\n", r, i, byte(r), r)
 	}
 
 	// The iteration order over maps is not specified and is not guaranteed
