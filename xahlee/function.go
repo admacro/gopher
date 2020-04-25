@@ -15,7 +15,15 @@ func multiply(x, y int) int {
 
 // multiple return values
 // named return values are treated as local variables declared
-// at the top of the function body
+// at the top of the function body;
+//
+// named result parameters
+// the return or result "parameters" of a Go function can be given names
+// and used as regular variables, just like the incoming parameters.
+// when named, return or result parameters are initialized to the zero
+// values for their types when the function begins; if the function executes
+// a return statement with no arguments, the current values of the result
+// parameters are used as the returned values.
 func divide(x, y int) (quotient int, remainder int) {
 	quotient = x / y
 	remainder = x - quotient*y
