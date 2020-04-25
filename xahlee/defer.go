@@ -1,4 +1,15 @@
 // https://golang.org/ref/spec#Defer_statements
+// A "defer" statement invokes a function whose execution is deferred to
+// the moment the surrounding function returns, either because the surrounding
+// function executed a return statement, reached the end of its function body,
+// or because the corresponding goroutine is panicking.
+//
+// https://golang.org/doc/effective_go.html#defer
+// Go's defer statement schedules a function call (the deferred function)
+// to be run immediately before the function executing the defer returns.
+// It's an unusual but effective way to deal with situations such as resources
+// that must be released regardless of which path a function takes to return.
+// The canonical examples are unlocking a mutex or closing a file.
 package main
 
 import "fmt"
