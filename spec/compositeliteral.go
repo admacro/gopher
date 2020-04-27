@@ -1,5 +1,6 @@
 // https://golang.org/ref/spec#Composite_literals
 // https://golang.org/ref/spec#Type_assertions
+// see ./allocation.go for slice and map allocation with new and make
 package main
 
 import (
@@ -54,17 +55,24 @@ func main() {
 	//     ArrayList<String> list // declared (value: nil), but storage not allocated
 	//     ArrayList<String> list = new ArrayList<String>() // declared with storage allocation
 
-	// declared but uninitialized (storage not allocated)
+	// a variable is initialized to its zero value if no expression is given
+	// if an expression is given, a variable is initialized
+	// to the computation result of the expression
+
+	// declared without expression
+	// implicitly initialized with zero value of type []string
 	var s []string
 
-	// declared but uninitialized (storage not allocated, compare with new in Java)
-	// ss is a pointer points to a slice with value nil
-	ss := new([]string)
+	// declared with expression, initialized with return value of new
+	// new returns a pointer points to a slice with value nil
+	ss := new([]string) // equivalent to: var ss *[]string
 
-	// declared and initialized (storage allocated, but still an empty slice without any elements)
+	// declared with expression
+	// initialized with an empty slice without any elements
 	sss := []string{}
 
-	// declared and initialized (storage allocated with 5 string elements set to zero value of string type)
+	// declared with expression
+	// initialized with 5 string elements set to zero value of string type
 	ssss := make([]string, 5)
 
 	printInfo(s, *ss, sss, ssss)
