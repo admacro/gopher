@@ -97,10 +97,13 @@ func main() {
 	// to the newly allocated array; inefficient when the append
 	// operation is constant (very often; frequently; repeatedly)
 	// see ../xahlee/slice.go for more on append
+	fmt.Printf("(length %d, capacity %d) %#v\n", len(ss), cap(ss), ss)
 	for i := 0; i < 5; i++ {
-		// the capacity grows in an exponential way with base 2 (doubles)
-		// when append beyond the capacity, that is
-		// 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024
+		// when length and capacity is 0, append needs to create a new
+		// underlying array and associate it to the slice, the length
+		// and capacity is the number of items to append;
+		// after that, the capacity dobules when append beyond the capacity
+		// new capacity = current capacity * 2
 		ss = append(ss, fmt.Sprintf("go%d", i))
 		fmt.Printf("(length %d, capacity %d) %#v\n", len(ss), cap(ss), ss)
 	}
