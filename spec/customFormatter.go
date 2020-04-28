@@ -16,14 +16,21 @@ type Computer struct {
 	os   string
 }
 
+// https://golang.org/doc/effective_go.html#printing
+// There is one important detail to understand about this approach, however:
+// don't construct a String/Format method by calling Sprintf in a way that
+// will recur into your String/Format method indefinitely. This can happen
+// if the Sprintf call attempts to print the receiver directly as a string,
+// which in turn will invoke the method again. It's a common and easy mistake
+// to make.
+
 // receiver is value type Computer
 // print functions in fmt package will recognize values
 // of both Computer and *Computer
 // if receiver is pointer type (*Computer), only values
 // of type *Computer will be supported
 func (comp Computer) String() string {
-	startLine := fmt.Sprintf("Computer {")
-	return comp.fieldsString(startLine)
+	return comp.fieldsString("Computer {")
 }
 
 // receiver is pointer type *Computer
@@ -33,6 +40,11 @@ func (comp *Computer) Format(f fmt.State, c rune) {
 	out := ""
 	switch c {
 	case 'z':
+		// %p wants a pointer value, it prints the address the pointer holds
+		// if use %z, it will recur forever:
+		//     runtime: goroutine stack exceeds 1000000000-byte limit
+		//     runtime: sp=0xc0200e0388 stack=[0xc0200e0000, 0xc0400e0000]
+		//     fatal error: stack overflow
 		startLine := fmt.Sprintf("&Computer(%p) {", comp)
 		out = comp.fieldsString(startLine)
 	default:
@@ -46,6 +58,15 @@ func (comp *Computer) Format(f fmt.State, c rune) {
 }
 
 func (comp *Computer) fieldsString(startLine string) string {
+	// Sprintf will only call the String method when it wants a string. To prevent
+	// infinite recursion when using Sprintf in String or Format, use a format
+	// verb that does not want a string value.
+	// String will be called infinitely:
+	//     runtime: goroutine stack exceeds 1000000000-byte limit
+	//     runtime: sp=0xc0200e0340 stack=[0xc0200e0000, 0xc0400e0000]
+	//     fatal error: stack overflow
+	// fmt.Println(fmt.Sprint(*comp))
+
 	archLine := fmt.Sprintf("%16s: %v,", "Architecture", comp.arch)
 	cpuLine := fmt.Sprintf("%16s: %v,", "CPU", comp.cpu)
 	osLine := fmt.Sprintf("%16s: %v", "OS", comp.os)
