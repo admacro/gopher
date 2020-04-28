@@ -33,7 +33,7 @@ func (comp *Computer) Format(f fmt.State, c rune) {
 	out := ""
 	switch c {
 	case 'z':
-		startLine := fmt.Sprintf("&Computer(%v) {", &comp)
+		startLine := fmt.Sprintf("&Computer(%p) {", comp)
 		out = comp.fieldsString(startLine)
 	default:
 		out = "invalid verb"
