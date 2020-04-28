@@ -56,6 +56,9 @@ func main() {
 	fmt.Printf("r[b]:%#v, %#v\n", vvv, vvv_exist) // r[b]:"", false
 
 	// delete key
-	delete(p, "dad")
-	fmt.Println(p) // map[mom:48]
+	delete(p, "dad") // delete existing key
+	fmt.Println(p)   // map[mom:48]
+
+	delete(p, "dad") // it's ok to delete non-existing (or absent) key
+	fmt.Println(p)   // map[mom:48]
 }
