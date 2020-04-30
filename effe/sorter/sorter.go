@@ -54,8 +54,8 @@ func (p byStock) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
 // Intead of creating three separate functions with each returning a
 // corresponding concrete type of sort.Interface, only one function
 // is needed if it returns sort.Interface.
-// sort.Interface is an exported type in package sort, the same applys
-// to an interface in this package, in which case you only need to export
+// sort.Interface is an exported type in package sort, the above applys
+// to any interface in this package, in which case you only need to export
 // that interface, instead of the three concrete types.
 func BySorter(sk sorterKind, ps []Product) sort.Interface {
 	switch sk {
