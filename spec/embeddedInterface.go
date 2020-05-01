@@ -63,7 +63,7 @@ func main() {
 	bI.x()
 	cI = &si
 	cI.x()
-	fmt.Printf("%v", aI)
+	fmt.Printf("%v\n", aI)
 }
 
 // An interface type T may not embed itself
