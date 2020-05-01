@@ -1,4 +1,5 @@
 // https://golang.org/ref/spec#Method_sets
+// https://github.com/golang/go/wiki/MethodSets#variables
 package main
 
 import "fmt"
