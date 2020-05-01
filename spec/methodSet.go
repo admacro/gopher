@@ -34,10 +34,12 @@ func main() {
 	fmt.Printf("T: %#v\n", t)
 
 	// But, how can t call ReceivePointer()?
-	// No, it can't! That's the truth. But why?
+	// Is ReceivePointer in method set of T?
+	// No, it isn't! That's the truth. But why?
 	// Because, AUTOMATICALLY!
 	// Go compiler interprets t as &t when calling ReceivePointer() as the method has a pointer receiver;
 	// also, t (the value), is passed to the method, not &t (the pointer).
+	// the method set of T does not actually contain Receivepointer() even it can be invoked by t of type T
 
 	// Thus, the following two expressions are equivalent:
 	t.ReceivePointer()
@@ -49,6 +51,7 @@ func main() {
 	// Similar things happen vice versa
 	// --------------------------------
 
+	// but this time, things are a bit different
 	// Method set of type *T includes all methods declared with receiver *T or T (that is,
 	// it also contains the method set of T): Receivepointer() and ReceiveValue()
 	pt := &T{}
