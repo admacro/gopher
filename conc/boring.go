@@ -14,10 +14,21 @@ import (
 // The go statement runs the function as usual, but doesn't make the caller wait.
 // It launches a goroutine.
 // The functionality is analogous to the & on the end of a shell command.
+//
 // goroutine is not a thread. (it's userspace greenthread)
 // There might be only one thread in a program with thousands of goroutines.
-// Instead, goroutines are multiplexed dynamically onto threads as needed to keep all the goroutines running.
-// But if you think of it as a very cheap thread, you won't be far off.
+//
+// Instead, goroutines are multiplexed dynamically onto multiple OS threads as
+// nedded to keep all the goroutines running; so if one should block, such as
+// while waiting for I/O, others continue to run.
+//
+// If you think of goroutine as a very cheap thread, you won't be far off.
+//
+// https://golang.org/doc/effective_go.html#goroutines
+// A goroutine has a simple model: it is a function executing concurrently with
+// other goroutines in the same address space. It is lightweight, costing little
+// more than the allocation of stack space. And the stacks start small, so they
+// are cheap, and grow by allocating (and freeing) heap storage as required.
 func main() {
 	c := make(chan string)
 	go boring("boring!", c)
