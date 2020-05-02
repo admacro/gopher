@@ -19,7 +19,9 @@ code. If not set, `GOPATH` defaults to `~/go`. To see the value of
 structure. [More on GOPATH][gopath]
 
 ### WIP
-- [Effective Go][effective]
+- [Frequently Asked Questions (FAQ)][faq]
+- [Diagnose Go Programes][diag]
+- [The Go Wiki][wiki]
 
 ### Done
 - [Xahlee's Golang Tutorial][xah]
@@ -28,6 +30,7 @@ structure. [More on GOPATH][gopath]
 - [Writing web application in Go][gowiki]
 - [Object-oriented programming without inheritance][oop]
 - [The Go Programming Language Specification][spec]
+- [Effective Go][effective]
 
 ### Other references
 - [The Go Blog][goblog]
@@ -44,3 +47,6 @@ structure. [More on GOPATH][gopath]
 [oop]: https://yourbasic.org/golang/inheritance-object-oriented/
 [gopl]: https://www.gopl.io
 [goblog]: https://blog.golang.org/index
+[faq]: https://golang.org/doc/faq
+[diag]: https://golang.org/doc/diagnostics.html
+[wiki]: https://github.com/golang/go/wiki
