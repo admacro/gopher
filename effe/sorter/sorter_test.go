@@ -8,9 +8,9 @@ import (
 
 func TestSorter(t *testing.T) {
 	ps := []Product{
-		Product{"shoes", 69.9, 200},
-		Product{"pants", 19.9, 100},
-		Product{"t-shirt", 29.9, 50},
+		{"shoes", 69.9, 200},
+		{"pants", 19.9, 100},
+		{"t-shirt", 29.9, 50},
 	}
 	fmt.Println("\nsort by price")
 	bySorter := BySorter(Price, ps)
