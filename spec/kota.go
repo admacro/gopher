@@ -46,6 +46,6 @@ func main() {
 	fmt.Println(kota()) // 7
 
 	// increment control
-	a, b = kota(true), kota(true)
+	a, b := kota(true), kota(true)
 	fmt.Println(a, b) // 7, 7
 }
