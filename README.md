@@ -1,6 +1,5 @@
-# allez
-Allez is the french word for go. This is where I learn Go, a
-programming language.
+# aller
+I'm learning [Go](https://www.golang.org/).
 
 ### Programming Environment Setup
 
