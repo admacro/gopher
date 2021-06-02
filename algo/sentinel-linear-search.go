@@ -4,8 +4,13 @@ package main
 import "fmt"
 
 func main() {
-	var boys = []string{"Jack", "Bob", "Mike", "Paul", "Tom" }
-	var index = search(boys, "Tom")
+	var boys = []string{"Jack", "Bob", "Mike", "Paul", "Tom"}
+	printResult(search(boys, "Mike"))
+	printResult(search(boys, "Tom"))
+	printResult(search(boys, "Scott"))
+}
+
+func printResult(index int) {
 	if index > 0 {
 		fmt.Println("Target found at index ", index)
 	} else {
@@ -16,8 +21,10 @@ func main() {
 func search(nameList []string, target string) int {
 	lastIndex := len(nameList) - 1
 	last := nameList[lastIndex]
+	nameList[lastIndex] = target
 	i := 0
-	for ; nameList[i] != target; i++ {}
+	for ; nameList[i] != target; i++ {
+	}
 	nameList[lastIndex] = last
 	if i < lastIndex || nameList[lastIndex] == target {
 		return i
