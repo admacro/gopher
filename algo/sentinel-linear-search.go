@@ -18,15 +18,15 @@ func printResult(index int) {
 	}
 }
 
-func search(nameList []string, target string) int {
-	lastIndex := len(nameList) - 1
-	last := nameList[lastIndex]
-	nameList[lastIndex] = target
+func search(list []string, target string) int {
+	lastIndex := len(list) - 1
+	last := list[lastIndex]
+	list[lastIndex] = target // this guarantees a normal termation of the for loop below
 	i := 0
-	for ; nameList[i] != target; i++ {
+	for ; list[i] != target; i++ {
 	}
-	nameList[lastIndex] = last
-	if i < lastIndex || nameList[lastIndex] == target {
+	list[lastIndex] = last
+	if i < lastIndex || list[lastIndex] == target {
 		return i
 	}
 	return -1
