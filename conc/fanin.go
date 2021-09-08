@@ -24,9 +24,9 @@ func main() {
 }
 
 // Fan-in (https://en.wikipedia.org/wiki/Fan-in)
-// input1⟶⬊︎︎
+// input1⟶⬊
 //          ⟩--> c
-// input2⟶⬈︎
+// input2⟶⬈
 
 // <-chan means the channel is output only
 func fanIn(input1, input2 <-chan string) <-chan string {
