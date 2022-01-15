@@ -25,7 +25,7 @@ func main() {
 
 // Fan-in (https://en.wikipedia.org/wiki/Fan-in)
 // input1⟶⬊
-//          ⟩--> c
+//          ⟩⟶ c
 // input2⟶⬈
 
 // <-chan means the channel is output only
