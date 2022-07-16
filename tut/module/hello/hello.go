@@ -1,3 +1,4 @@
+// https://go.dev/doc/tutorial/create-module
 package main
 
 import (
