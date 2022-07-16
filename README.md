@@ -1,47 +1,40 @@
-# Gopher
-Keep learning [Go](https://www.golang.org/).
+# Learn [Go][go] programming language.
 
-### WIP
-- [The Go Memory Model][memory]
-- [Frequently Asked Questions (FAQ)][faq]
-- [Diagnose Go Programes][diag]
-- [Wiki Page of Go project on Github][gowiki]
+### In Progress
+- Review [Go doc][doc] (2022-07-16)
 
-### Done
+### To Do
+- [The Go Memory Model][mem]
+- [GOPATH environment variable][gopath]
+
+### DONE
 - [Xahlee's Golang Tutorial][xah]
 - [A Tour of Go][tour]
-- [Go Concurrency Patterns (slides)][concurrency]
+- [Go Concurrency Patterns (slides)][conc]
 - [Writing web application in Go][gowebapp] ([Implementation][gowebapp-impl])
 - [Object-oriented programming without inheritance][oop]
 - [The Go Programming Language Specification][spec]
-- [Effective Go][effective]
+- [Effective Go][effe]
 
 ### References
 - [Go Documentation][doc]
-- [Package Documentation][pkgdoc]
-- [Command Documentation][cmddoc]
-- [The Go Programming Language (book)][gopl]
-- [The Go Blog][goblog]
+- [Go Blog][blog]
+- [Go Packages][pkg]
+- [Go Wiki][wiki]
 
-<!-- official -->
-[installer]: https://www.golang.org/dl
-[doc]: https://golang.org/doc/
-[cmddoc]: https://golang.org/doc/cmd/
-[pkgdoc]: https://pkg.go.dev/
-[spec]: https://golang.org/ref/spec/
-[memory]: https://golang.org/ref/mem/
-[effective]: https://golang.org/doc/effective_go.html
+<!-- Links -->
+[go]: https://go.dev/
+[doc]: https://go.dev/doc/
+[blog]: https://go.dev/blog/all
+[pkg]: https://pkg.go.dev/
+[wiki]: https://github.com/golang/go/wiki
+[tour]: https://tour.go.dev/list
+[spec]: https://go.dev/ref/spec/
+[effe]: https://go.dev/doc/effective_go
+[mem]: https://go.dev/ref/mem/
+[conc]: https://talks.go.dev/2012/concurrency.slide
 [gopath]: https://pkg.go.dev/cmd/go#hdr-GOPATH_environment_variable
-[diag]: https://golang.org/doc/diagnostics.html
-[faq]: https://golang.org/doc/faq
-[tour]: https://tour.golang.org/list
-[goblog]: https://blog.golang.org/index
-[concurrency]: https://talks.golang.org/2012/concurrency.slide
-[gowiki]: https://github.com/golang/go/wiki
-
-<!-- non-official -->
-[gopl]: https://www.gopl.io
-[gowebapp]: https://golang.org/doc/articles/wiki/
+[gowebapp]: https://go.dev/doc/articles/wiki/
 [gowebapp-impl]: https://github.com/admacro/gowiki
 [oop]: https://yourbasic.org/golang/inheritance-object-oriented/
 [xah]: http://xahlee.info/golang/golang_index.html
