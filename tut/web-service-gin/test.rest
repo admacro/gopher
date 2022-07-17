@@ -1,0 +1,8 @@
+:baseurl = http://localhost:8080
+
+# get all albums
+GET :baseurl/albums
+
+# add album
+POST :baseurl/albums
+
