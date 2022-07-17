@@ -2,6 +2,7 @@
 
 ### In Progress
 - Review [Go doc][doc] (2022-07-16)
+  - [Tutorials][tut]
 
 ### To Do
 - [The Go Memory Model][mem]
@@ -38,3 +39,4 @@
 [gowebapp-impl]: https://github.com/admacro/gowiki
 [oop]: https://yourbasic.org/golang/inheritance-object-oriented/
 [xah]: http://xahlee.info/golang/golang_index.html
+[tut]: https://go.dev/doc/tutorial/
