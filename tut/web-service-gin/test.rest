@@ -3,6 +3,26 @@
 # get all albums
 GET :baseurl/albums
 
+# get all albums
+GET :baseurl/albums/3
+
 # add album
 POST :baseurl/albums
+Content-Type: application/json
+
+{
+    "title": "The Modern Sound of Betty Carter",
+    "artist": "Betty Carter",
+    "price": 49.99
+}
+
+# add album
+POST :baseurl/albums
+Content-Type: application/json
+
+{
+    "title": "Giant Steps",
+    "artist": "John Coltrane",
+    "price": 63.99
+}
 
