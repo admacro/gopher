@@ -61,6 +61,7 @@ func main() {
 
 	var name string
 	var age int
+	var gender rune
 
 	// grouping variable declaration
 	var (
@@ -81,12 +82,13 @@ func main() {
 	//   "" => for string type
 	//   false => for bool type
 	//   nil => for pointers, functions, interfaces, slices, channels, and maps
-	fmt.Printf("%#v\n", name)    // ""
-	fmt.Printf("%#v\n", age)     // 0
-	fmt.Printf("%#v\n", height)  // 0
-	fmt.Printf("%#v\n", balance) // 0
-	fmt.Printf("%#v\n", married) // false
-	fmt.Printf("%#v\n", titles)  // []string(nil)
+	fmt.Printf("zero value of %T: %#v\n", name, name)           // ""
+	fmt.Printf("zero value of %T: %#v\n", age, age)             // 0
+	fmt.Printf("zero value of %T(rune): %#v\n", gender, gender) // 0
+	fmt.Printf("zero value of %T: %#v\n", height, height)       // 0
+	fmt.Printf("zero value of %T: %#v\n", balance, balance)     // 0
+	fmt.Printf("zero value of %T: %#v\n", married, married)     // false
+	fmt.Printf("zero value of %T: %#v\n", titles, titles)       // []string(nil)
 
 	fmt.Printf("%#v, %#v\n", address, city) // "Shoreline", "Brisbane"
 
