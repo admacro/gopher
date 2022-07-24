@@ -97,7 +97,7 @@ func main() {
 	// Changing the elements of a slice modifies the corresponding elements of
 	// its underlying array. Other slices that share the same underlying array
 	// will see those changes.
-
+	//
 	// https://golang.org/ref/spec#Slice_expressions
 	// slice of slice: slice expression
 	// a[low : high]
@@ -113,8 +113,19 @@ func main() {
 	// a[low : high : max]
 	//     length = high - low
 	//     capacity = max - low
+	// s[a:] is same as s[a:len(s):cap(s)]
+	// s[:b] is same as s[0:b:cap(s)]
+	fmt.Printf("len(followers): %#v, cap(followers): %#v\n", len(followers), cap(followers))
 	var leaderCandidates = followers[4:6:8]
 	print_slice_info(leaderCandidates, "leader candidates") // length: 2, capacity: 4
+
+	// max must not be greater than cap(s)
+	var temp = followers[4:6:11]   // panic: runtime error: slice bounds out of range [::11] with capacity 10
+	print_slice_info(temp, "temp") // length: 2, capacity: 4
+
+	// The capacity of a slice is the number of elements in the underlying array,
+	// counting from the first element in the slice.
+	// see https://go.dev/tour/moretypes/11
 
 	// new slice share the same data with original slice from which it is sliced
 	leaders[0] = "vip leader"
