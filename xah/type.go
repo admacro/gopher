@@ -16,11 +16,13 @@ func main() {
 
 		p bool = true
 
-		a int   = 1
-		b int8  = 2
-		c int16 = 3
-		d int32 = 4 // alias rune
-		e int64 = 5
+		// An int can store at maximum a 64-bit integer, and sometimes less.
+		big int   = 1<<63 - 1
+		a   int   = 1
+		b   int8  = 2
+		c   int16 = 3
+		d   int32 = 4 // alias rune
+		e   int64 = 5
 
 		ua uint   = 1
 		ub uint8  = 2 // alias byte
@@ -41,6 +43,7 @@ func main() {
 	)
 
 	fmt.Printf("%T\n", p)
+	fmt.Printf("%T: %v\n", big, big)
 	fmt.Printf("%T\n", a)
 	fmt.Printf("%T\n", b)
 	fmt.Printf("%T\n", c)
