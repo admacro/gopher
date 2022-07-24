@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"runtime"
+)
 
 func grade(score int) string {
 	if score < 0 || score > 100 {
@@ -43,7 +46,7 @@ func main() {
 
 	n := 4
 	if x := 3; n > x { // x := 3 is a short statement inside if clause
-		fmt.Printf("OK")
+		fmt.Println("OK")
 	}
 
 	// NO ternary expression
@@ -76,5 +79,36 @@ func main() {
 		fmt.Println("Equal")
 	case c > 1:
 		fmt.Println("Greater")
+	}
+
+	fmt.Print("Go runs on ")
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		fmt.Println("OS X.")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		// freebsd, openbsd,
+		// plan9, windows...
+		fmt.Printf("%s.\n", os)
+	}
+
+	// Switch cases evaluate cases from top to bottom, stopping when a case succeeds.
+	var f = func() bool {
+		fmt.Println("f()")
+		return false
+	}
+	var i int = 0
+	switch {
+	case i < 2:
+	case f(): // does not call f() if i < 2
+	}
+
+	// f() will be called as i > 2 is false
+	switch {
+	case i > 2:
+	case f():
+	default:
+		fmt.Println("default case")
 	}
 }
